@@ -1,0 +1,30 @@
+<%@ MasterClass="Application.layouts.MainLayout" Title="Wizard" %>
+
+<com:TContent ID="Body">
+
+<fieldset>
+<legend>Credentials</legend>
+ 
+<span>Your username:</span>
+<com:TRequiredFieldValidator ControlToValidate="Username"
+    ErrorMessage="Please provide your username." 
+    Display="Dynamic" />
+<br/>
+<com:TTextBox ID="Username" />
+ 
+<br/>
+<span>Your password:</span>
+<com:TRequiredFieldValidator ControlToValidate="Password"
+    ErrorMessage="Please provide your password." 
+    Display="Dynamic" />
+<br/>
+<com:TTextBox TextMode="Password" ID="Password" />
+ 
+<br/>
+<br/>
+<com:TButton ButtonType="Submit" Text="Login" OnClick="loginButtonClicked" />
+<com:TLabel Style="color: red" Id="Message" />
+ 
+</fieldset>
+
+</com:TContent>

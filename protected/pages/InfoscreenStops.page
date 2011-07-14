@@ -1,0 +1,29 @@
+<%@ MasterClass="Application.layouts.MainLayout" Title="Wizard" %>
+ 
+<com:TContent ID="Body">
+
+<h2>Configure stops</h2>
+<br/>
+ 
+<table>
+<tr>
+	<td><com:TLabel Text="NMBS:" /></td>
+	<td><com:TLabel Text="MIVB:" /></td>	
+</tr>
+<tr>
+	<td><com:TDropDownList Id="ListNMBS" /></td>
+	<td><com:TDropDownList Id="ListMIVB" /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="Currently selected:" /></td>
+	<td><com:TLabel Text="Currently selected:" /></td>
+</tr>
+<tr>
+	<td><com:TListBox Id="SelectedNMBS" /></td>
+	<td><com:TListBox Id="SelectedMIVB" /></td>
+</tr>
+</table>
+ 
+</com:TContent>
+
+

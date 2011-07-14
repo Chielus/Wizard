@@ -1,0 +1,41 @@
+<%@ MasterClass="Application.layouts.MainLayout" Title="Wizard" %>
+ 
+<com:TContent ID="Body">
+
+<h2>List of available Infoscreens</h2>
+<br/>
+ 
+<com:TDataGrid
+	Width="700px"
+	CellPadding="2"
+	ID="DataGrid"
+	AutoGenerateColumns="false"
+	HeaderStyle.BackColor="black"
+	HeaderStyle.ForeColor="white"
+	ItemStyle.BackColor="#BFCFFF"
+	ItemStyle.Font.Italic="true"
+	AlternatingItemStyle.BackColor="#E6ECFF">
+ 
+	<com:TBoundColumn
+		HeaderText="Id"
+		DataField="id"
+		/>
+	<com:TBoundColumn
+		HeaderText="Info"
+		DataField="infotext"
+		/>
+	<com:TBoundColumn
+		HeaderText="MOTD"
+		DataField="motd"
+		/>
+	<com:TTemplateColumn
+		ItemStyle.HorizontalAlign="Center">
+		<prop:ItemTemplate>
+			<com:TButton Text="Configure" OnCommand="Page.configureInfoscreen" CommandName="infoscreenid" CommandParameter="<%#$this->Parent->DataItem['id']%>" />
+		</prop:ItemTemplate>
+	</com:TTemplateColumn>
+</com:TDataGrid>
+ 
+</com:TContent>
+
+
