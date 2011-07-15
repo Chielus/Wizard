@@ -1,0 +1,55 @@
+<%@ MasterClass="Application.layouts.MainLayout" Title="Wizard" %>
+ 
+<com:TContent ID="Body">
+ 
+<h2>Configuration</h2>
+<br/>
+ 
+<table>
+<tr>
+	<td><com:TLabel Text="Title:" /></td>
+	<td><com:TTextBox ID="Title" />
+		<com:TRequiredFieldValidator ControlToValidate="Title"
+    		ErrorMessage="Please provide a title." 
+    		Display="Dynamic" /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="Message of the day:" /></td>
+	<td><com:TTextBox ID="Motd" /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="Number of rows to show for each stop:" /></td>
+	<td><com:TTextBox ID="Rows" />
+		<com:TRequiredFieldValidator ControlToValidate="Rows"
+    		ErrorMessage="Please provide a number." 
+    		Display="Dynamic" />
+    	<com:TRangeValidator
+    		ControlToValidate="Rows"
+    		DataType="Integer"
+    		MinValue="2"
+    		MaxValue="20"
+    		Text="Value must be between 2 and 20." /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="Interval to cycle through the different stops:" /></td>
+	<td><com:TTextBox ID="Cycle" />
+		<com:TRequiredFieldValidator ControlToValidate="Cycle"
+    		ErrorMessage="Please provide a number." 
+    		Display="Dynamic" />
+    	<com:TRangeValidator
+    		ControlToValidate="Cycle"
+    		DataType="Integer"
+    		MinValue="5"
+    		MaxValue="60"
+    		Text="Value must be between 5 and 60." /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="Infoscreen language:" /></td>
+	<td><com:TDropDownList Id="Lang" /></td></td>
+</tr>
+</table>
+
+<br/>
+<com:TButton ButtonType="Submit" Text="Save" OnClick="saveConfiguration" />
+ 
+</com:TContent>
