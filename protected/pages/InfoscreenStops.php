@@ -1,8 +1,20 @@
 <?php
 class InfoscreenStops extends TPage
-{	
-	private $stationsNMBS;
-	private $stationsMIVB;
+{				
+	// register a prado rendered componentid so we can access this easily
+	public function registerScriptClientId($component){
+		$cs = $this->Page->ClientScript;
+		if (!$cs->isHeadScriptRegistered('ClientID')){
+			$cs->registerHeadScript('ClientID', 'ClientID = {};');
+		}
+		if (!$cs->isHeadScriptRegistered('ClientID.'.$component->ID)){
+			$cs->registerHeadScript('ClientID.'.$component->ID, 'ClientID.'.$component->ID.' = \''.$component->ClientID.'\';');
+		}
+	}
+	
+	public function getLang() {
+		return $this->Session['lang'];
+	}
 	
 	private function curl_download($url) { 
 	    if (!function_exists('curl_init')){
@@ -43,39 +55,34 @@ class InfoscreenStops extends TPage
 		return $data;
 	}
 
+	public function onPreRender($param){
+		parent::onPreRender($param);
+	
+		$this->registerScriptClientId($this->ListNMBS);
+		$this->registerScriptClientId($this->ListMIVB);
+		$this->registerScriptClientId($this->ListDeLijn);
+		
+		$this->registerScriptClientId($this->SelectedNMBS);
+		$this->registerScriptClientId($this->SelectedMIVB);
+		$this->registerScriptClientId($this->SelectedDeLijn);
+	}
+
 	public function onLoad($param) {
     	parent::onLoad($param);
     	if(!$this->IsPostBack) {
-			$this->Session->open();
-			$lang = $this->Session['lang'];
-			$customer = $this->Session['customer'];
-			$infoscreenid = $this->Session['infoscreenid'];
-			
-			if($customer == null) {
+			$this->Session->open();			
+			if(!isset($this->Session['customer'])) {
 				// missing customer in session, redirect to login page
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
-			} else if($infoscreenid == null) {
+			} else if(!isset($this->Session['infoscreenid'])) {
 				// missing infoscreenid in session, redirect to list
 				$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
-			} else {
-				$this->stationsNMBS = $this->getStations('NMBS', $lang);
-				$this->stationsMIVB = $this->getStations('MIVB', $lang);
-					
-				$data = array();				
-				foreach($this->stationsNMBS as $key => $value) {
-					$data[$key] = $value['name'];
-				}				
-        		$this->ListNMBS->DataSource = $data; 
-        		$this->ListNMBS->dataBind();
-				
-				$data = array();				
-				foreach($this->stationsMIVB as $key => $value) {
-					$data[$key] = $value['name'];
-				}	
-				$this->ListMIVB->DataSource = $data;
-				$this->ListMIVB->dataBind();
 			}
     	}
+	}
+	
+	public function saveStops() {
+		$this->Response->redirect($this->Service->constructUrl('InfoscreenConfiguration', null, true));
 	}
 }
 ?>

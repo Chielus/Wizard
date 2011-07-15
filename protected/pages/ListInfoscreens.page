@@ -21,8 +21,8 @@
 		DataField="id"
 		/>
 	<com:TBoundColumn
-		HeaderText="Info"
-		DataField="infotext"
+		HeaderText="Title"
+		DataField="title"
 		/>
 	<com:TBoundColumn
 		HeaderText="MOTD"

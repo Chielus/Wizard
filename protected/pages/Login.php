@@ -1,13 +1,12 @@
 <?php
 class Login extends TPage
-{
+{	
     /**
      * Event handler for the OnClick event of the login button.
      * @param TButton the button triggering the event
      * @param TEventParameter event parameter (null here)    
      */
-    public function loginButtonClicked($sender, $param)
-    {
+    public function loginButtonClicked($sender, $param) {
         if ($this->IsValid)  // check if input validation is successful
         {
             // obtain the username and password from the textboxes

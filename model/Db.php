@@ -63,12 +63,12 @@ class Db {
 	 public function getInfoscreen($infoscreenid) {
 	 	$infoscreen = array();
 		
-		if($stmt = $this->dbconn->prepare("SELECT customerid, infotext, motd FROM infoscreens WHERE id = ?")) {
+		if($stmt = $this->dbconn->prepare("SELECT customerid, title, motd FROM infoscreens WHERE id = ?")) {
 			$stmt->bind_param('i', $infoscreenid);
 			$stmt->execute();
-			$stmt->bind_result($customerid, $infotext, $motd);
+			$stmt->bind_result($customerid, $title, $motd);
 			while($stmt->fetch()) {
-				$infoscreen = array_merge($infoscreen, array('customerid' => $customerid, 'infotext' => $infotext, 'motd' => $motd));;
+				$infoscreen = array_merge($infoscreen, array('customerid' => $customerid, 'title' => $title, 'motd' => $motd));;
 			}
 			$stmt->close();
 		}
@@ -76,21 +76,52 @@ class Db {
 		return $infoscreen;
 	 }
 	 
+	 // set title for infoscreen
+	 public function setInfoscreenTitle($infoscreenid, $title) {
+	 	if($stmt = $this->dbconn->prepare("UPDATE infoscreens SET title = ? WHERE id = ?")) {
+			$stmt->bind_param('si', $title, $infoscreenid);
+			$stmt->execute();
+			$stmt->close();
+		
+			return true;	
+		}
+		
+		return false;
+	 }
+	 
+	  // set motd for infoscreen
+	 public function setInfoscreenMotd($infoscreenid, $motd) {
+	 	if($stmt = $this->dbconn->prepare("UPDATE infoscreens SET motd = ? WHERE id = ?")) {
+			$stmt->bind_param('si', $motd, $infoscreenid);
+			$stmt->execute();
+			$stmt->close();
+		
+			return true;	
+		}
+		
+		return false;
+	 }
+	 
+	 
 	
 	/*
 	 * STATIONS
 	 */	
 	
 	// return array of stationids for specific infoscreen
+	// format: array(type = (..., ..., ...), type = (..., ..., ...), ...)
 	public function getStationIds($infoscreenid) {
 		$stationids = array();
+		$stationids['NMBS'] = array();
+		$stationids['MIVB'] = array();
+		$stationids['DeLijn'] = array();
 		
-		if($stmt = $this->dbconn->prepare("SELECT stationid FROM stations WHERE infoscreenid = ?")) {
+		if($stmt = $this->dbconn->prepare("SELECT stationid, type FROM stations WHERE infoscreenid = ?")) {
 			$stmt->bind_param('i', $infoscreenid);
 			$stmt->execute();
-			$stmt->bind_result($stationid);
+			$stmt->bind_result($stationid, $type);
 			while($stmt->fetch()) {
-				array_push($stationids, $stationid);
+				array_push($stationids[$type], $stationid);
 			}
 			$stmt->close();
 		}

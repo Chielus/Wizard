@@ -9,7 +9,7 @@ class Infoscreen {
 	
 	private $infoscreenid;
 	private $customerid;
-	private $infotext;
+	private $title;
 	private $motd;
 	
 	private $settings;
@@ -21,7 +21,7 @@ class Infoscreen {
 		$db = new Db();
 		$infoscreen = $db->getInfoscreen($this->infoscreenid);
 		$this->customerid = $infoscreen['customerid'];
-		$this->infotext = $infoscreen['infotext'];
+		$this->title = $infoscreen['title'];
 		$this->motd = $infoscreen['motd'];
 		
 		$this->settings = new Settings($this->infoscreenid);
@@ -32,12 +32,26 @@ class Infoscreen {
 		return $this->customerid;
 	}
 	
-	public function getInfoText() {
-		return $this->infotext;
+	public function getTitle() {
+		return $this->title;
+	}
+	
+	public function setTitle($title) {
+		$db = new Db();
+		if($db->setInfoscreenTitle($this->infoscreenid, $title)) {
+			$this->title = $title;
+		}
 	}
 	
 	public function getMotd() {
 		return $this->motd;
+	}
+	
+	public function setMotd($motd) {
+		$db = new Db();
+		if($db->setInfoscreenMotd($this->infoscreenid, $motd)) {
+			$this->motd = $motd;
+		}
 	}
 	
 	// STATIONS
@@ -54,10 +68,20 @@ class Infoscreen {
 		$this->stations->removeStation($stationid);
 	}
 	
+	public function removeAllStations() {
+		foreach($this->getStationIds() as $stationid) {
+			$this->removeStation($stationid);
+		}
+	}
+	
 	// SETTINGS
 	
 	public function getSettingValue($key) {
-		return $this->settings->getValue($key);
+		try {
+			return $this->settings->getValue($key);
+		} catch (Exception $exc) {
+			return null;
+		}		
 	}
 	
 	public function setSettingValue($key, $value) {

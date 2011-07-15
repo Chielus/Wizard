@@ -7,8 +7,8 @@ class ListInfoscreens extends TPage {
 		
 		$infoscreenids = $customer->getInfoscreenIds();
 		foreach($infoscreenids as $id) {
-			$infoscreen = new Infoscreen($id);
-			array_push($data, array("id" => $id, "infotext" => $infoscreen->getInfoText(), "motd" => $infoscreen->getMotd()));
+			$infoscreen = $this->Session['customer']->getInfoscreen($id);
+			array_push($data, array("id" => $id, "title" => $infoscreen->getTitle(), "motd" => $infoscreen->getMotd()));
 		}
 		
 		return $data;
@@ -17,15 +17,15 @@ class ListInfoscreens extends TPage {
 	public function onLoad($param) {
     	parent::onLoad($param);
     	if(!$this->IsPostBack) {
-			$this->Session->open();
-			$customer = $this->Session['customer'];
+    		$this->Session->open();
 			
-			if($customer == null) {
+			if(!isset($this->Session['customer'])) {
 				// missing customer in session, redirect to login page
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
-			} else {										
+			} else {
+				$customer = $this->Session['customer'];					
         		$this->DataGrid->DataSource = $this->getInfoscreens($customer);
-        		$this->DataGrid->dataBind();
+        		$this->DataGrid->dataBind();				
 			}
     	}
 	}

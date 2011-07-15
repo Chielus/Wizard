@@ -13,6 +13,7 @@ class Stations {
 	}
 	
 	// return array of stationids
+	// format: array(type = (..., ..., ...), type = (..., ..., ...), ...)
 	public function getStationIds() {
 		return $this->stationids;
 	}	

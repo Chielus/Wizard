@@ -8,21 +8,81 @@
 <table>
 <tr>
 	<td><com:TLabel Text="NMBS:" /></td>
-	<td><com:TLabel Text="MIVB:" /></td>	
+	<td><com:TLabel Text="MIVB:" /></td>
+	<td><com:TLabel Text="De Lijn:" /></td>
 </tr>
 <tr>
 	<td><com:TDropDownList Id="ListNMBS" /></td>
 	<td><com:TDropDownList Id="ListMIVB" /></td>
+	<td><com:TDropDownList Id="ListDeLijn" /></td>
 </tr>
 <tr>
 	<td><com:TLabel Text="Currently selected:" /></td>
 	<td><com:TLabel Text="Currently selected:" /></td>
+	<td><com:TLabel Text="Currently selected:" /></td>
 </tr>
 <tr>
-	<td><com:TListBox Id="SelectedNMBS" /></td>
-	<td><com:TListBox Id="SelectedMIVB" /></td>
+	<td><com:TListBox Rows="6" Width="200" Id="SelectedNMBS" /></td>
+	<td><com:TListBox Rows="6" Width="200" Id="SelectedMIVB" /></td>
+	<td><com:TListBox Rows="6" Width="200" Id="SelectedDeLijn" /></td>
 </tr>
 </table>
+
+<br/>
+<com:TButton ButtonType="Submit" Text="Save" OnClick="saveStops" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {	
+		fillDropDownList();
+		
+		$('#' + ClientID.ListNMBS).change(getSelectedAddList);
+	    $('#' + ClientID.ListMIVB).change(getSelectedAddList);
+	    $('#' + ClientID.ListDeLijn).change(getSelectedAddList);
+	});
+	    
+	function fillDropDownList() {	
+		$.getJSON('http://api.irail.be/stations/?system=NMBS&format=json&lang=<%= $this->Lang %>', function(data) {
+		  var station = data.station;
+		  $.each(station, function(index, value) {
+		  	$('<option>')
+		  		.val(value.id)
+		  		.text(value.name)
+		  		.appendTo('#' + ClientID.ListNMBS);
+		  });	  
+		});
+		
+		$.getJSON('http://api.irail.be/stations/?system=MIVB&format=json&lang=<%= $this->Lang %>', function(data) {
+		  var station = data.station;
+		  $.each(station, function(index, value) {
+		  	$('<option>')
+		  		.val(value.id)
+		  		.text(value.name)
+		  		.appendTo('#' + ClientID.ListMIVB);
+		  });	  
+		});	
+	}
+	
+    function getSelectedAddList(event) {
+	  var element = event.srcElement;
+	  var item = element.options[element.selectedIndex].text;
+
+	    if(element.id == ClientID.ListNMBS) {
+	      if($("#" + ClientID.SelectedNMBS + " option[value=\"" + item + "\"]").length == 0) {
+			$("#" + ClientID.SelectedNMBS).append('<option value="' + item + '">' + item + '</option>');
+	      }
+	    } else if(element.id = ClientID.ListMIVB) {
+	      if($("#" + ClientID.SelectedMIVB + " option[value=\"" + item + "\"]").length == 0) {
+			$("#" + ClientID.SelectedMIVB).append('<option value="' + item + '">' + item + '</option>');
+	      }
+	    } else if(element.id = ClientId.ListDeLijn) {
+	      if($("#" + ClientID.SelectedDeLijn + " option[value=\"" + item + "\"]").length == 0) {
+			$("#"  + ClientID.SelectedDeLijn).append('<option value="' + item + '">' + item + '</option>');
+	      }
+	    }
+	  
+	}
+</script>
  
 </com:TContent>
 
