@@ -13,6 +13,7 @@ class InfoscreenStops extends TPage
 	}
 	
 	public function getLang() {
+		$this->Session->open();
 		return $this->Session['lang'];
 	}
 	
@@ -82,7 +83,20 @@ class InfoscreenStops extends TPage
 	}
 	
 	public function saveStops() {
-		$this->Response->redirect($this->Service->constructUrl('InfoscreenConfiguration', null, true));
+		$this->Session->open();			
+		if(!isset($this->Session['customer'])) {
+			// missing customer in session, redirect to login page
+			$this->Response->redirect($this->Service->constructUrl('Login', null, true));
+		} else if(!isset($this->Session['infoscreenid'])) {
+			// missing infoscreenid in session, redirect to list
+			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
+		} else {
+			$customer = $this->Session['customer'];
+			$infoscreenid = $this->Session['infoscreenid'];
+			$infoscreen = $customer->getInfoscreen($infoscreenid);			
+			
+			$this->Response->redirect($this->Service->constructUrl('InfoscreenConfiguration', null, true));
+		}		
 	}
 }
 ?>
