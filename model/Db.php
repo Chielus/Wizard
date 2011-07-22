@@ -12,8 +12,8 @@ class Db {
 	// construct database connection
 	function __construct() {
 		$dbhost = 'localhost';
-		$dbuser = 'root';
-		$dbpass = '702672rs';
+		$dbuser = 'flatturtle';
+		$dbpass = 'Cha6U6aTaGE3';
 		$db = 'flatturtle';		
 		
  		$this->dbconn = new mysqli($dbhost, $dbuser, $dbpass, $db);
