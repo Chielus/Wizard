@@ -1,11 +1,13 @@
 <html>
-<com:THead />
+<com:THead>
+
+</com:THead>
 <body>
 <com:TForm>
 <div id="page">
  
 <div id="header">
-<h1>Wizard</h1>
+<h1><%[Wizard]%></h1>
 </div>
  
 <div id="body">
@@ -13,7 +15,7 @@
 </div>
 
 <div id="footer">
-<h4>Copyright &copy; 2011 FlatTurtle. All rights reserved.</h4>
+<h4>Copyright &copy; 2011 FlatTurtle. Some rights reserved.</h4>
 </div>
  
 </div>

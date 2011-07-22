@@ -1,0 +1,127 @@
+/* CSS RESET */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 14px !important;
+	font: inherit;
+	vertical-align: baseline;
+	line-height: 1.2;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #333333;
+	font-weight: normal;
+	}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+	}
+
+/* GENERAL */
+body {
+	background-color: #ffffff;
+	}
+#page {
+	margin: 0 auto 0 auto;
+	padding: 0;
+	width: 800px;
+	}
+
+/* HEADER */
+#header {
+	margin: 20px 5px 20px 5px;
+	height: 60px;
+	vertical-align: baseline;
+	background: url('img/flatturtle.jpg') no-repeat top right;
+	}
+#header h1 {
+	font-size: 46px !important;
+	font-weight: bold;
+	}
+
+/* BODY */
+#body {
+	padding: 0 10px;
+	}
+#body h2 {
+	height: 28px;
+	margin: 0 -10px 30px -10px;
+	width: 772px;
+	padding: 7px 14px;
+	font-size: 20px !important;
+	line-height: 28px;
+	color: #ffffff;
+	background: #333333;
+	}
+
+/* BODY: FORMS */
+input, select {
+	border: 1px solid #adadad;
+	margin: 5px 0;
+	padding: 4px;
+	vertical-align: middle;
+	background-color: #ffffff;
+	}
+input[type="submit"] {
+	color: #ffffff;
+	border: 0px;
+	background-color: #728d36;
+	font-size: 20px;
+	padding: 5px 7px;
+	margin: 0;
+	border-radius: 6px;
+	}
+input[type="submit"]:hover {
+	background-color: #29581f;
+	}
+td input[type="submit"] {
+	font-size: 14px;
+	padding: 5px;
+	margin: 5px;
+	}
+
+/* BODY: TABLES */
+table#Main {
+	width: 780px;
+	padding: 0;
+	}
+table#ctl0_Body_DataGrid tbody {
+	background-color: #eeeeee;
+	}
+table#ctl0_Body_DataGrid tr {
+	border: 3px solid #ffffff;
+	}
+table#ctl0_Body_DataGrid td {
+	padding: 0 5px;
+	}
+legend {
+	font-weight: bold;
+	font-size: 18px !important;
+	color: #777777;
+	margin: 0;
+	padding: 0 0 10px 0;
+	}
+th {
+	background-color: #dddddd;
+	padding: 5px;
+	font-weight: bold;
+	text-align: left;
+	}
+
+/* FOOTER */
+#footer {
+	padding: 14px;
+	width: 772px;
+	margin: 30px 0 0 0;
+	background-color: #999999;
+	}
+#footer h4 {
+	color: #444444;
+	}

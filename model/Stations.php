@@ -20,27 +20,44 @@ class Stations {
 
 	// add station or throw exception
 	public function addStation($stationid) {
-		if(!in_array($stationid, $this->stationids)) {
-			$db = new Db();
-			if($db->insertStation($this->infoscreenid, $stationid)) {
-				array_push($this->stationids, $stationid);
+		$found = false;
+		foreach($this->stationids as $stations) {
+			if(in_array($stationid, $stations)) {
+				$found = true;
 			}
-		} else {
-			throw new Exception("This station has already been set.");
 		}
+
+		if($found) {
+			throw new Exception("This station has already been set.");			
+		} else {
+			$db = new Db();
+			if(!$db->insertStation($this->infoscreenid, $stationid)) {
+				throw new Exception("Adding station failed.");
+			} else {
+				$this->stationids = $db->getStationIds($this->infoscreenid);
+			}
+		}		
 	}
 	
 	// remove station or throw exception
 	public function removeStation($stationid) {
-		if(in_array($stationid, $this->stationids)) {
+		$found = false;
+		foreach($this->stationids as $stations) {			
+			if(in_array($stationid, $stations)) {
+				$found = true;
+			}
+		}
+
+		if($found) {
 			$db = new Db();
-			if($db->deleteStation($this->infoscreenid, $stationid)) {
-				$this->stationsids = array_diff($this->stationids, array($stationid));
-				$this->stationsids = array_values($this->stationids);
+			if(!$db->deleteStation($this->infoscreenid, $stationid)) {
+				throw new Exception("Station removal failed.");
+			} else {
+				$this->stationids = $db->getStationIds($this->infoscreenid);
 			}
 		} else {
 			throw new Exception("This station hasn't been set yet.");
-		}
+		}		
 	}
 	
 }

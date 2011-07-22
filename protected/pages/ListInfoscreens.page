@@ -2,36 +2,35 @@
  
 <com:TContent ID="Body">
 
-<h2>List of available Infoscreens</h2>
-<br/>
+<h2><%[List of available infoscreens]%></h2>
  
 <com:TDataGrid
 	Width="700px"
-	CellPadding="2"
+	CellPadding="5px"
 	ID="DataGrid"
 	AutoGenerateColumns="false"
 	HeaderStyle.BackColor="black"
 	HeaderStyle.ForeColor="white"
-	ItemStyle.BackColor="#BFCFFF"
+	ItemStyle.BackColor="#EEEEEE"
 	ItemStyle.Font.Italic="true"
-	AlternatingItemStyle.BackColor="#E6ECFF">
+	AlternatingItemStyle.BackColor="#FFFFFF">
  
 	<com:TBoundColumn
-		HeaderText="Id"
+		HeaderText="<%[Id]%>"
 		DataField="id"
 		/>
 	<com:TBoundColumn
-		HeaderText="Title"
+		HeaderText="<%[Title]%>"
 		DataField="title"
 		/>
 	<com:TBoundColumn
-		HeaderText="MOTD"
+		HeaderText="<%[Message of the day]%>"
 		DataField="motd"
 		/>
 	<com:TTemplateColumn
 		ItemStyle.HorizontalAlign="Center">
 		<prop:ItemTemplate>
-			<com:TButton Text="Configure" OnCommand="Page.configureInfoscreen" CommandName="infoscreenid" CommandParameter="<%#$this->Parent->DataItem['id']%>" />
+			<com:TButton Text="<%[Configure]%>" OnCommand="Page.configureInfoscreen" CommandName="infoscreenid" CommandParameter="<%#$this->Parent->DataItem['id']%>" />
 		</prop:ItemTemplate>
 	</com:TTemplateColumn>
 </com:TDataGrid>

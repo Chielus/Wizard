@@ -2,6 +2,6 @@
  
 <com:TContent ID="Body">
  
-<h1 style="color: red">ERROR</h1>
+<h1 style="color: red"><%[ERROR]%></h1>
  
 </com:TContent>

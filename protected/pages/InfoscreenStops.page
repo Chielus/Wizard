@@ -2,14 +2,13 @@
  
 <com:TContent ID="Body">
 
-<h2>Configure stops</h2>
-<br/>
+<h2><%[Configure stops]%></h2>
  
-<table>
+<table ID="Main">
 <tr>
-	<td><com:TLabel Text="NMBS:" /></td>
-	<td><com:TLabel Text="MIVB:" /></td>
-	<td><com:TLabel Text="De Lijn:" /></td>
+	<td><com:TLabel Text="<%[NMBS:]%>" /></td>
+	<td><com:TLabel Text="<%[MIVB:]%>" /></td>
+	<td><com:TLabel Text="<%[De Lijn:]%>" /></td>
 </tr>
 <tr>
 	<td><com:TDropDownList Id="ListNMBS" /></td>
@@ -17,19 +16,22 @@
 	<td><com:TDropDownList Id="ListDeLijn" /></td>
 </tr>
 <tr>
-	<td><com:TLabel Text="Currently selected:" /></td>
-	<td><com:TLabel Text="Currently selected:" /></td>
-	<td><com:TLabel Text="Currently selected:" /></td>
+	<td><com:TLabel Text="<%[Currently selected:]%>" /></td>
+	<td><com:TLabel Text="<%[Currently selected:]%>" /></td>
+	<td><com:TLabel Text="<%[Currently selected:]%>" /></td>
 </tr>
 <tr>
 	<td><com:TListBox Rows="6" Width="200" Id="SelectedNMBS" /></td>
 	<td><com:TListBox Rows="6" Width="200" Id="SelectedMIVB" /></td>
 	<td><com:TListBox Rows="6" Width="200" Id="SelectedDeLijn" /></td>
 </tr>
+<tr>
+	<td><com:THiddenField Id="HiddenStations" Value="" /></td>
+</tr>
 </table>
 
 <br/>
-<com:TButton ButtonType="Submit" Text="Save" OnClick="saveStops" />
+<com:TButton ButtonType="Submit" Text="<%[Save]%>" OnClick="saveStops" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script type="text/javascript">
@@ -37,8 +39,12 @@
 		fillDropDownList();
 		
 		$('#' + ClientID.ListNMBS).change(getSelectedAddList);
-	    $('#' + ClientID.ListMIVB).change(getSelectedAddList);
-	    $('#' + ClientID.ListDeLijn).change(getSelectedAddList);
+	    	$('#' + ClientID.ListMIVB).change(getSelectedAddList);
+	    	$('#' + ClientID.ListDeLijn).change(getSelectedAddList);
+
+		$('#' + ClientID.SelectedNMBS).keydown(removeOptionSelected);
+	     	$('#' + ClientID.SelectedMIVB).keydown(removeOptionSelected);
+	      	$('#' + ClientID.SelectedDeLijn).keydown(removeOptionSelected);
 	});
 	    
 	function fillDropDownList() {	
@@ -66,22 +72,39 @@
     function getSelectedAddList(event) {
 	  var element = event.srcElement;
 	  var item = element.options[element.selectedIndex].text;
+	  var value = element.options[element.selectedIndex].value;
 
 	    if(element.id == ClientID.ListNMBS) {
-	      if($("#" + ClientID.SelectedNMBS + " option[value=\"" + item + "\"]").length == 0) {
-			$("#" + ClientID.SelectedNMBS).append('<option value="' + item + '">' + item + '</option>');
+	      if($("#" + ClientID.SelectedNMBS + " option[value=\"" + value + "\"]").length == 0) {
+			$("#" + ClientID.SelectedNMBS).append('<option value="' + value + '">' + item + '</option>');			
 	      }
 	    } else if(element.id = ClientID.ListMIVB) {
 	      if($("#" + ClientID.SelectedMIVB + " option[value=\"" + item + "\"]").length == 0) {
-			$("#" + ClientID.SelectedMIVB).append('<option value="' + item + '">' + item + '</option>');
+			$("#" + ClientID.SelectedMIVB).append('<option value="' + value + '">' + item + '</option>');
 	      }
 	    } else if(element.id = ClientId.ListDeLijn) {
-	      if($("#" + ClientID.SelectedDeLijn + " option[value=\"" + item + "\"]").length == 0) {
-			$("#"  + ClientID.SelectedDeLijn).append('<option value="' + item + '">' + item + '</option>');
+	      if($("#" + ClientID.SelectedDeLijn + " option[value=\"" + value + "\"]").length == 0) {
+			$("#"  + ClientID.SelectedDeLijn).append('<option value="' + value + '">' + item + '</option>');
 	      }
-	    }
-	  
-	}
+	    }		
+	
+	   var tVal = $("#" + ClientID.HiddenStations).val();
+	   $("#" + ClientID.HiddenStations).val(tVal + ";" + value + ";");
+    }
+
+    function removeOptionSelected(event) {
+	 if (event.keyCode == 46) {
+	        var element = event.srcElement;
+	 
+                var i;
+                for (i = element.length - 1; i >= 0; i--) {
+                     if (element.options[i].selected) {      
+						$('#' + ClientID.HiddenStations).text().replace(element.options[i].value, '');
+						element.remove(i);
+                     }
+                }
+	 }
+    }
 </script>
  
 </com:TContent>

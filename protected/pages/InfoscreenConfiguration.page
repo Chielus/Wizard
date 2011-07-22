@@ -2,54 +2,73 @@
  
 <com:TContent ID="Body">
  
-<h2>Configuration</h2>
+<h2><%[Configuration]%></h2>
 <br/>
  
-<table>
+<table ID="Main">
 <tr>
-	<td><com:TLabel Text="Title:" /></td>
-	<td><com:TTextBox ID="Title" />
-		<com:TRequiredFieldValidator ControlToValidate="Title"
-    		ErrorMessage="Please provide a title." 
+	<td><com:TLabel Text="<%[Title:]%>" /></td>
+	<td><com:TTextBox Width="400" ID="Title" />
+	<com:TRequiredFieldValidator ControlToValidate="Title"
+    		ErrorMessage="<%[Please provide a title.]%>" 
     		Display="Dynamic" /></td>
 </tr>
 <tr>
-	<td><com:TLabel Text="Message of the day:" /></td>
-	<td><com:TTextBox ID="Motd" /></td>
+	<td><com:TLabel Text="<%[Message of the day:]%>" /></td>
+	<td><com:TTextBox Width="400" ID="Motd" />
+	<com:TRequiredFieldValidator ControlToValidate="Motd"
+    		ErrorMessage="<%[Please provide a message of the day.]%>" 
+    		Display="Dynamic" /></td>	
 </tr>
 <tr>
-	<td><com:TLabel Text="Number of rows to show for each stop:" /></td>
+	<td><com:TLabel Text="<%[Number of rows to show for each stop:]%>" /></td>
 	<td><com:TTextBox ID="Rows" />
-		<com:TRequiredFieldValidator ControlToValidate="Rows"
-    		ErrorMessage="Please provide a number." 
+	<com:TRequiredFieldValidator ControlToValidate="Rows"
+    		ErrorMessage="<%[Please provide a valid number.]%>" 
     		Display="Dynamic" />
     	<com:TRangeValidator
     		ControlToValidate="Rows"
     		DataType="Integer"
     		MinValue="2"
-    		MaxValue="20"
-    		Text="Value must be between 2 and 20." /></td>
+    		MaxValue="15"
+    		Text="<%[Value must be between 2 and 15.]%>" /></td>
 </tr>
 <tr>
-	<td><com:TLabel Text="Interval to cycle through the different stops:" /></td>
+	<td><com:TLabel Text="<%[Interval in seconds to cycle through the different stops:]%>" /></td>
 	<td><com:TTextBox ID="Cycle" />
-		<com:TRequiredFieldValidator ControlToValidate="Cycle"
-    		ErrorMessage="Please provide a number." 
+	<com:TRequiredFieldValidator ControlToValidate="Cycle"
+    		ErrorMessage="<%[Please provide a valid number.]%>" 
     		Display="Dynamic" />
     	<com:TRangeValidator
     		ControlToValidate="Cycle"
     		DataType="Integer"
-    		MinValue="5"
-    		MaxValue="60"
-    		Text="Value must be between 5 and 60." /></td>
+    		MinValue="10"
+    		MaxValue="120"
+    		Text="<%[Value must be between 10 and 120.]%>" /></td>
 </tr>
 <tr>
-	<td><com:TLabel Text="Infoscreen language:" /></td>
-	<td><com:TDropDownList Id="Lang" /></td></td>
+	<td><com:TLabel Text="<%[Infoscreen language:]%>" /></td>
+	<td><com:TDropDownList Id="Lang" /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="<%[Color theme:]%>" /></td>
+	<td><com:TColorPicker Id="Color" />
+	<com:TRequiredFieldValidator ControlToValidate="Color"
+    		ErrorMessage="<%[Please provide a valid color.]%>" 
+    		Display="Dynamic" />
+	<com:TRegularExpressionValidator
+    		ControlToValidate="Color"
+    		RegularExpression="^(#){1}([a-fA-F0-9]){6}$"
+    		Text="<%[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]%>" /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="<%[Upload your logo:]%>" /></td>
+	<td><com:TActiveFileUpload ID="FileUpload" onFileUpload="fileUploaded" /></td>
 </tr>
 </table>
+<com:TActiveLabel ID="Result" />
 
 <br/>
-<com:TButton ButtonType="Submit" Text="Save" OnClick="saveConfiguration" />
+<com:TButton ButtonType="Submit" Text="<%[Save]%>" OnClick="saveConfiguration" />
  
 </com:TContent>

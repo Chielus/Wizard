@@ -1,8 +1,32 @@
 <?php
 class InfoscreenStops extends TPage
-{				
-	// register a prado rendered componentid so we can access this easily
-	public function registerScriptClientId($component){
+{
+	public function __construct() {   		
+        parent::__construct();
+
+		$this->Session->open();
+		if(isset($this->Session['lang'])) {
+			$lang = $this->Session['lang'];
+		} else {
+			$lang = "en";
+		}
+		
+        if(!is_null($lang)) {
+            $this->getApplication()->getGlobalization()->setCulture($lang);
+        }
+   }				
+
+	public function onPreRenderComplete($param) {
+		parent::onPreRenderComplete($param);
+
+		$url = 'css/style.css';
+ 		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+    }
+
+	// register a prado rendered componentid so we can access this easily using javascript
+	// for some reason a randered prado component has an id slightly modified
+	// than the one specified
+	private function registerScriptClientId($component){
 		$cs = $this->Page->ClientScript;
 		if (!$cs->isHeadScriptRegistered('ClientID')){
 			$cs->registerHeadScript('ClientID', 'ClientID = {};');
@@ -66,23 +90,27 @@ class InfoscreenStops extends TPage
 		$this->registerScriptClientId($this->SelectedNMBS);
 		$this->registerScriptClientId($this->SelectedMIVB);
 		$this->registerScriptClientId($this->SelectedDeLijn);
+
+		$this->registerScriptClientId($this->HiddenStations);
 	}
 
 	public function onLoad($param) {
-    	parent::onLoad($param);
-    	if(!$this->IsPostBack) {
-			$this->Session->open();			
-			if(!isset($this->Session['customer'])) {
-				// missing customer in session, redirect to login page
-				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
-			} else if(!isset($this->Session['infoscreenid'])) {
-				// missing infoscreenid in session, redirect to list
-				$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
-			}
-    	}
+	    	parent::onLoad($param);
+	    	if(!$this->IsPostBack) {			
+				$this->Session->open();			
+				if(!isset($this->Session['customer'])) {
+					// missing customer in session, redirect to login page
+					$this->Response->redirect($this->Service->constructUrl('Login', null, true));
+				} else if(!isset($this->Session['infoscreenid'])) {
+					// missing infoscreenid in session, redirect to list
+					$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
+				} else {
+					$this->HiddenStations->Value = "";
+				}
+	    	}
 	}
 	
-	public function saveStops() {
+	public function saveStops($sender, $param) {
 		$this->Session->open();			
 		if(!isset($this->Session['customer'])) {
 			// missing customer in session, redirect to login page
@@ -93,8 +121,14 @@ class InfoscreenStops extends TPage
 		} else {
 			$customer = $this->Session['customer'];
 			$infoscreenid = $this->Session['infoscreenid'];
-			$infoscreen = $customer->getInfoscreen($infoscreenid);			
-			
+			$infoscreen = $customer->getInfoscreen($infoscreenid);	
+						
+			$infoscreen->removeAllStations();
+			$stations = explode(";", $this->HiddenStations->Value);
+			foreach($stations as $id) {
+				$infoscreen->addStation($id);
+			}
+
 			$this->Response->redirect($this->Service->constructUrl('InfoscreenConfiguration', null, true));
 		}		
 	}

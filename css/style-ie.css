@@ -1,0 +1,12 @@
+html, body {
+	text-align: center;
+	}
+p, div {
+	text-align: left;
+	}
+#footer, #body h2  {
+	width: 800px;
+	}
+input {
+	height: 26px;
+	}

@@ -2,29 +2,32 @@
 
 <com:TContent ID="Body">
 
-<fieldset>
-<legend>Credentials</legend>
+<h2><%[Login]%></h2>
+
+<com:TLabel Text="<%[Wizard language:]%>" />
+<br/>
+<com:TDropDownList Id="Lang" />
+<br/>
+<br/>
  
-<span>Your username:</span>
+<span><%[Username:]%></span>
 <com:TRequiredFieldValidator ControlToValidate="Username"
-    ErrorMessage="Please provide your username." 
+    ErrorMessage="<%[Please provide your username.]%>" 
     Display="Dynamic" />
 <br/>
 <com:TTextBox ID="Username" />
  
 <br/>
-<span>Your password:</span>
+<span><%[Password:]%></span>
 <com:TRequiredFieldValidator ControlToValidate="Password"
-    ErrorMessage="Please provide your password." 
+    ErrorMessage="<%[Please provide your password.]%>" 
     Display="Dynamic" />
 <br/>
 <com:TTextBox TextMode="Password" ID="Password" />
  
 <br/>
 <br/>
-<com:TButton ButtonType="Submit" Text="Login" OnClick="loginButtonClicked" />
+<com:TButton ButtonType="Submit" Text="<%[Login]%>" OnClick="loginButtonClicked" />
 <com:TLabel Style="color: red" Id="Message" />
- 
-</fieldset>
 
 </com:TContent>

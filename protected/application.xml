@@ -8,8 +8,21 @@
   </paths>
   -->
 
+	<paths>
+	   <using namespace="System.I18N.*" />
+	</paths>
+
   <!-- configurations for modules -->
   <modules>
+
+	<module id="globalization" class="Application.ApplicationGlobalization" Charset="UTF-8"
+		AvailableCultures="nl;en;de;fr">
+   	   	<translation type="XLIFF"
+         	source="Application.messages"
+        	marker="@"
+        	autosave="true" cache="true" />
+	</module>
+
     <!-- Remove this comment mark to enable caching
     <module id="cache" class="System.Caching.TDbCache" />
     -->
