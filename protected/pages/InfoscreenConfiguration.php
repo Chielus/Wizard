@@ -1,9 +1,9 @@
 <?php
-Prado::Using('System.Web.UI.ActiveControls.*');
 
 class InfoscreenConfiguration extends TPage
 {
-   public function __construct() {   		
+	// 18n
+   	public function __construct() {   		
         parent::__construct();
 
 		$this->Session->open();
@@ -16,8 +16,9 @@ class InfoscreenConfiguration extends TPage
         if(!is_null($lang)) {
             $this->getApplication()->getGlobalization()->setCulture($lang);
         }
-   }	   
+  	}	   
    
+   	// css
     public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -25,7 +26,11 @@ class InfoscreenConfiguration extends TPage
  		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
     }
 
-   public function onLoad($param) {
+	// load page and fill in configuration details
+	// missing customer -> login
+	// missing infoscreendi -> list
+	// else OK
+   	public function onLoad($param) {
     	parent::onLoad($param);
     	if(!$this->IsPostBack) {
     		$this->Session->open();			
@@ -44,30 +49,15 @@ class InfoscreenConfiguration extends TPage
 				$this->Motd->Data = $infoscreen->GetMotd();
 				$this->Rows->Data = $infoscreen->getSettingValue("rowstoshow");
 				$this->Cycle->Data = $infoscreen->getSettingValue("cycleinterval");
+				$this->Color->Data = $infoscreen->getSettingValue("color");
 				
-				$this->Lang->DataSource = array("EN" => "EN", "NL" => "NL", "DE" => "DE", "FR" => "FR");
+				$this->Lang->DataSource = array("en" => "EN", "nl" => "NL", "de" => "DE", "fr" => "FR");
         		$this->Lang->dataBind();
 			}
     	}
-   }
+   	}
 
-	public function fileUploaded($sender, $param)
-    {
-    	if($sender->HasFile) {
-    		$sender->getFileType();
-
-	        if($sender->getFileSize() == 0) {
-	            $this->isFileValidator->setIsValid(false);
-	        } else if(($ft != 'image/bmp') && ($ft != 'image/gif') && ($ft != 'image/jpeg') && ($ft != 'image/png') ) {
-	            $this->typeFileValidator->setIsValid(false);
-	        } else if($sender->getFileSize() > 2197152) {
-	            $this->sizeFileValidator->setIsValid(false);
-	        } else {
-	            
-	        }			
-		}
-    }
-
+	// save configuration details
 	public function saveConfiguration($sender, $param) {
 		$this->Session->open();			
 		if(!isset($this->Session['customer'])) {
@@ -77,7 +67,7 @@ class InfoscreenConfiguration extends TPage
 			// missing infoscreenid in session, redirect to list
 			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 		} else {
-			if ($this->IsValid)  // check if input validation is successful
+			if ($this->IsValid) // check if input validation is successful
 			{
 				$customer = $this->Session['customer'];
 				$infoscreenid = $this->Session['infoscreenid'];
@@ -89,6 +79,8 @@ class InfoscreenConfiguration extends TPage
 				$infoscreen->setSettingValue("cycleinterval", $this->Cycle->Data);
 				$infoscreen->setSettingValue("lang", $this->Lang->SelectedValue);
 				$infoscreen->setSettingValue("color", $this->Color->Data);
+				
+				$this->Response->redirect($this->Service->constructUrl('InfoscreenLogo', null, true));
 			}
 		}
 	}

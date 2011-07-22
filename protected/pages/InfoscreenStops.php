@@ -1,6 +1,8 @@
 <?php
 class InfoscreenStops extends TPage
 {
+	
+	// i18n
 	public function __construct() {   		
         parent::__construct();
 
@@ -16,6 +18,7 @@ class InfoscreenStops extends TPage
         }
    }				
 
+	// css
 	public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -60,6 +63,7 @@ class InfoscreenStops extends TPage
 	    return $output;
 	}
 	
+	// retreive stations
 	protected function getStations($system, $lang) {
 		$data = array();
 		
@@ -80,6 +84,7 @@ class InfoscreenStops extends TPage
 		return $data;
 	}
 
+	// register controls for clientside scripting
 	public function onPreRender($param){
 		parent::onPreRender($param);
 	
@@ -94,6 +99,9 @@ class InfoscreenStops extends TPage
 		$this->registerScriptClientId($this->HiddenStations);
 	}
 
+	// missing customer -> login
+	// missing infoscreendi -> list
+	// else OK
 	public function onLoad($param) {
 	    	parent::onLoad($param);
 	    	if(!$this->IsPostBack) {			

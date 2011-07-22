@@ -1,6 +1,7 @@
 <?php
 class Login extends TPage
 {
+ 	// i18n
    public function __construct() {   		
         parent::__construct();
 
@@ -16,8 +17,13 @@ class Login extends TPage
         }
    }
 
+
    public function onLoad($param) {
     	parent::onLoad($param);
+		
+		$this->Session->open();
+		unset($this->Session['customer']);
+		unset($this->Session['lang']);	
 		
     	if(!$this->IsPostBack) {	
 			$this->Lang->DataSource = array("en" => "EN", "nl" => "NL", "de" => "DE", "fr" => "FR");
@@ -25,6 +31,7 @@ class Login extends TPage
     	}
    }
 
+	
     public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 

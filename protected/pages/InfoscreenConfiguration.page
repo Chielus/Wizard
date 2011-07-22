@@ -61,12 +61,7 @@
     		RegularExpression="^(#){1}([a-fA-F0-9]){6}$"
     		Text="<%[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]%>" /></td>
 </tr>
-<tr>
-	<td><com:TLabel Text="<%[Upload your logo:]%>" /></td>
-	<td><com:TActiveFileUpload ID="FileUpload" onFileUpload="fileUploaded" /></td>
-</tr>
 </table>
-<com:TActiveLabel ID="Result" />
 
 <br/>
 <com:TButton ButtonType="Submit" Text="<%[Save]%>" OnClick="saveConfiguration" />

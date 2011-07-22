@@ -1,171 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="nl" datatype="plaintext" original="messages" date="2011-07-22T10:05:52Z" product-name="messages">
+ <file source-language="EN" target-language="nl" datatype="plaintext" original="messages" date="2011-07-21T23:59:00Z" product-name="messages">
   <body>
   
-<trans-unit id="1">
-<source><![CDATA[Id]]></source>
-<target><![CDATA[]]></target>
-</trans-unit>
-
 <trans-unit id="2">
-<source><![CDATA[Title]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Wizard]]></source>
+<target><![CDATA[Wizard]]></target>
 </trans-unit>
 
 <trans-unit id="3">
-<source><![CDATA[Message of the day]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Login]]></source>
+<target><![CDATA[Inloggen]]></target>
 </trans-unit>
 
 <trans-unit id="4">
-<source><![CDATA[Configure]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Username:]]></source>
+<target><![CDATA[Gebruikersnaam:]]></target>
 </trans-unit>
 
 <trans-unit id="5">
-<source><![CDATA[Wizard]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Password:]]></source>
+<target><![CDATA[Wachtwoord:]]></target>
 </trans-unit>
 
 <trans-unit id="6">
-<source><![CDATA[List of available infoscreens]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Wizard language:]]></source>
+<target><![CDATA[Taal wizard:]]></target>
 </trans-unit>
 
 <trans-unit id="7">
-<source><![CDATA[Wizard language:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Id]]></source>
+<target><![CDATA[Id]]></target>
 </trans-unit>
 
 <trans-unit id="8">
-<source><![CDATA[Please provide your username.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Title]]></source>
+<target><![CDATA[Titel]]></target>
 </trans-unit>
 
 <trans-unit id="9">
-<source><![CDATA[Please provide your password.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Message of the day]]></source>
+<target><![CDATA[Bericht van de dag]]></target>
 </trans-unit>
 
 <trans-unit id="10">
-<source><![CDATA[Login]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[List of available infoscreens]]></source>
+<target><![CDATA[Lijst van beschikbare infoschermen]]></target>
 </trans-unit>
 
 <trans-unit id="11">
-<source><![CDATA[Username:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Configure]]></source>
+<target><![CDATA[Configureren]]></target>
 </trans-unit>
 
 <trans-unit id="12">
-<source><![CDATA[Password:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Please provide your username.]]></source>
+<target><![CDATA[Vul aub je gebruikersnaam in.]]></target>
 </trans-unit>
 
 <trans-unit id="13">
-<source><![CDATA[NMBS:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Please provide your password.]]></source>
+<target><![CDATA[Vul aub je wachtwoord in.]]></target>
 </trans-unit>
 
 <trans-unit id="14">
-<source><![CDATA[MIVB:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Invalid credentials!]]></source>
+<target><![CDATA[Ongeldige inloggegevens!]]></target>
 </trans-unit>
 
 <trans-unit id="15">
-<source><![CDATA[De Lijn:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[NMBS:]]></source>
+<target><![CDATA[NMBS:]]></target>
 </trans-unit>
 
 <trans-unit id="16">
-<source><![CDATA[Currently selected:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[MIVB:]]></source>
+<target><![CDATA[MIVB:]]></target>
 </trans-unit>
 
 <trans-unit id="17">
-<source><![CDATA[Save]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[De Lijn:]]></source>
+<target><![CDATA[De Lijn:]]></target>
 </trans-unit>
 
 <trans-unit id="18">
-<source><![CDATA[Configure stops]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Currently selected:]]></source>
+<target><![CDATA[Huidige selectie:]]></target>
 </trans-unit>
 
 <trans-unit id="19">
-<source><![CDATA[Title:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Save]]></source>
+<target><![CDATA[Opslaan]]></target>
 </trans-unit>
 
 <trans-unit id="20">
-<source><![CDATA[Please provide a title.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Configure stops]]></source>
+<target><![CDATA[Haltes configureren]]></target>
 </trans-unit>
 
 <trans-unit id="21">
-<source><![CDATA[Message of the day:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Title:]]></source>
+<target><![CDATA[Titel:]]></target>
 </trans-unit>
 
 <trans-unit id="22">
-<source><![CDATA[Please provide a message of the day.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Please provide a title.]]></source>
+<target><![CDATA[Geef aub een titel in.]]></target>
 </trans-unit>
 
 <trans-unit id="23">
-<source><![CDATA[Number of rows to show for each stop:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Message of the day:]]></source>
+<target><![CDATA[Bericht van de dag:]]></target>
 </trans-unit>
 
 <trans-unit id="24">
-<source><![CDATA[Please provide a valid number.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Please provide a message of the day.]]></source>
+<target><![CDATA[Geef aub een bericht van de dag in.]]></target>
 </trans-unit>
 
 <trans-unit id="25">
-<source><![CDATA[Value must be between 2 and 15.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Number of rows to show for each stop:]]></source>
+<target><![CDATA[Aantal rijen te tonen per halte:]]></target>
 </trans-unit>
 
 <trans-unit id="26">
-<source><![CDATA[Interval in seconds to cycle through the different stops:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Please provide a valid number.]]></source>
+<target><![CDATA[Geef aub een geldig getal in.]]></target>
 </trans-unit>
 
 <trans-unit id="27">
-<source><![CDATA[Value must be between 10 and 120.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Value must be between 2 and 15.]]></source>
+<target><![CDATA[De waarde moet tussen 2 en 15 liggen.]]></target>
 </trans-unit>
 
 <trans-unit id="28">
-<source><![CDATA[Infoscreen language:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Interval in seconds to circulate through the different stops:]]></source>
+<target><![CDATA[Interval om door de haltes te circuleren (in seconden):]]></target>
 </trans-unit>
 
 <trans-unit id="29">
-<source><![CDATA[Color theme:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Value must be between 10 and 120.]]></source>
+<target><![CDATA[De waarde moet tussen 10 en 120 liggen.]]></target>
 </trans-unit>
 
 <trans-unit id="30">
-<source><![CDATA[Please provide a valid color.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Infoscreen language:]]></source>
+<target><![CDATA[Taal infoscherm:]]></target>
 </trans-unit>
 
 <trans-unit id="31">
-<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Color theme:]]></source>
+<target><![CDATA[Kleur thema:]]></target>
 </trans-unit>
 
 <trans-unit id="32">
-<source><![CDATA[Upload your logo:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white, #000000 is black etc ...]]></source>
+<target><![CDATA[Geen geldige HTML kleurwaarde. #FFFFFF is wit, #000000 is zwart etc ...]]></target>
 </trans-unit>
 
 <trans-unit id="33">
 <source><![CDATA[Configuration]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[Configuratie]]></target>
+</trans-unit>
+
+<trans-unit id="34">
+<source><![CDATA[Upload your logo:]]></source>
+<target><![CDATA[Logo uploaden:]]></target>
+</trans-unit>
+
+<trans-unit id="35">
+<source><![CDATA[Please provide a valid color.]]></source>
+<target><![CDATA[Geef aub een geldige kleur in.]]></target>
 </trans-unit>
 </body>
  </file>

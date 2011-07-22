@@ -3,6 +3,8 @@
 <com:TContent ID="Body">
 
 <h2><%[List of available infoscreens]%></h2>
+
+<com:TLabel Id="Empty" Style="display: none" Text="" />
  
 <com:TDataGrid
 	Width="700px"

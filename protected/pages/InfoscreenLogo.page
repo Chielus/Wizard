@@ -1,0 +1,35 @@
+<%@ MasterClass="Application.layouts.MainLayout" Title="Wizard" %>
+ 
+<com:TContent ID="Body">
+ 
+<h2><%[Logo]%></h2>
+        
+<com:TActiveFileUpload ID="Logo" OnFileUpload="fileUploaded" />
+
+	<com:TCustomValidator
+        ID="isFileValidator"
+        Display="Dynamic"
+        EnableClientScript="false"
+        ControlToValidate="Logo"
+        ErrorMessage="<%[You have to provide a file to upload or file is too big.]%>" />
+    <com:TCustomValidator
+        ID="sizeFileValidator"
+        Display="Dynamic"
+        EnableClientScript="false"
+        ControlToValidate="Logo"
+        ErrorMessage="<%[File size must be below 500kB.]%>" />
+    <com:TCustomValidator
+        ID="typeFileValidator"
+        Display="Dynamic"
+        EnableClientScript="false"
+        ControlToValidate="Logo"
+        ErrorMessage="<%[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]%>" />
+<br/>
+<br/>
+<br/>
+<com:TActiveImage ID="Display" Style="display: none" />
+<br/>
+<br/>
+<com:TButton ButtonType="Submit" Text="<%[Save]%>" OnClick="submitLogo" />
+ 
+</com:TContent>

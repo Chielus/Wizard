@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="en" datatype="plaintext" original="messages" date="2011-07-21T23:59:00Z" product-name="messages">
+ <file source-language="EN" target-language="en" datatype="plaintext" original="messages" date="2011-07-22T15:34:46Z" product-name="messages">
   <body>
   
 <trans-unit id="2">
@@ -71,12 +71,12 @@
 
 <trans-unit id="15">
 <source><![CDATA[NMBS:]]></source>
-<target><![CDATA[NMBS:]]></target>
+<target><![CDATA[NMBS/SNCB:]]></target>
 </trans-unit>
 
 <trans-unit id="16">
 <source><![CDATA[MIVB:]]></source>
-<target><![CDATA[MIVB:]]></target>
+<target><![CDATA[MIVB/STIB:]]></target>
 </trans-unit>
 
 <trans-unit id="17">
@@ -169,9 +169,79 @@
 <target><![CDATA[Upload your logo:]]></target>
 </trans-unit>
 
-<trans-unit id="34">
+<trans-unit id="35">
 <source><![CDATA[Please provide a valid color.]]></source>
 <target><![CDATA[Please provide a valid color.]]></target>
+</trans-unit>
+
+<trans-unit id="36">
+<source><![CDATA[There are no infoscreens available to configure!]]></source>
+<target><![CDATA[There are no infoscreens available to configure!]]></target>
+</trans-unit>
+
+<trans-unit id="37">
+<source><![CDATA[Logo]]></source>
+<target><![CDATA[Logo]]></target>
+</trans-unit>
+
+<trans-unit id="38">
+<source><![CDATA[ERROR]]></source>
+<target><![CDATA[ERROR]]></target>
+</trans-unit>
+
+<trans-unit id="39">
+<source><![CDATA[You have to provide a file to upload.]]></source>
+<target><![CDATA[You have to provide a file to upload.]]></target>
+</trans-unit>
+
+<trans-unit id="40">
+<source><![CDATA[File size must be under 500kB.]]></source>
+<target><![CDATA[File size must be under 500kB.]]></target>
+</trans-unit>
+
+<trans-unit id="41">
+<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></source>
+<target><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></target>
+</trans-unit>
+
+<trans-unit id="42">
+<source><![CDATA[You have to provide a file to upload or file is too big.]]></source>
+<target><![CDATA[You have to provide a file to upload or file is too big.]]></target>
+</trans-unit>
+
+<trans-unit id="43">
+<source><![CDATA[This infoscreen has been configured successfully.]]></source>
+<target><![CDATA[This infoscreen has been configured successfully.]]></target>
+</trans-unit>
+
+<trans-unit id="44">
+<source><![CDATA[Infoscreen list]]></source>
+<target><![CDATA[Infoscreen list]]></target>
+</trans-unit>
+
+<trans-unit id="45">
+<source><![CDATA[Logout]]></source>
+<target><![CDATA[Logout]]></target>
+</trans-unit>
+
+<trans-unit id="46">
+<source><![CDATA[Success!]]></source>
+<target><![CDATA[Success!]]></target>
+</trans-unit>
+
+<trans-unit id="47">
+<source><![CDATA[<- Logout]]></source>
+<target><![CDATA[<- Logout]]></target>
+</trans-unit>
+
+<trans-unit id="48">
+<source><![CDATA[<- Back to list of available infoscreens]]></source>
+<target><![CDATA[<- Back to list of available infoscreens]]></target>
+</trans-unit>
+
+<trans-unit id="49">
+<source><![CDATA[File size must be below 500kB.]]></source>
+<target><![CDATA[File size must be below 500kB.]]></target>
 </trans-unit>
 </body>
  </file>

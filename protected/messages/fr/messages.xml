@@ -1,65 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="fr" datatype="plaintext" original="messages" date="2011-07-22T10:03:50Z" product-name="messages">
+ <file source-language="EN" target-language="fr" datatype="plaintext" original="messages" date="2011-07-22T16:51:40Z" product-name="messages">
   <body>
   
-<trans-unit id="1">
-<source><![CDATA[Id]]></source>
-<target><![CDATA[]]></target>
-</trans-unit>
-
 <trans-unit id="2">
-<source><![CDATA[Title]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Wizard]]></source>
+<target><![CDATA[Assistant]]></target>
 </trans-unit>
 
 <trans-unit id="3">
-<source><![CDATA[Message of the day]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Login]]></source>
+<target><![CDATA[Connexion]]></target>
 </trans-unit>
 
 <trans-unit id="4">
-<source><![CDATA[Configure]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Username:]]></source>
+<target><![CDATA[Nom d'utilisateur:]]></target>
 </trans-unit>
 
 <trans-unit id="5">
-<source><![CDATA[Wizard]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Password:]]></source>
+<target><![CDATA[Mot de passe:]]></target>
 </trans-unit>
 
+
 <trans-unit id="6">
-<source><![CDATA[List of available infoscreens]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Wizard language:]]></source>
+<target><![CDATA[Langue d'assistant:]]></target>
 </trans-unit>
 
 <trans-unit id="7">
-<source><![CDATA[Wizard language:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Id]]></source>
+<target><![CDATA[Id]]></target>
 </trans-unit>
 
 <trans-unit id="8">
-<source><![CDATA[Login]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Title]]></source>
+<target><![CDATA[Titre]]></target>
 </trans-unit>
 
 <trans-unit id="9">
-<source><![CDATA[Username:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Message of the day]]></source>
+<target><![CDATA[Message du jour]]></target>
 </trans-unit>
 
 <trans-unit id="10">
-<source><![CDATA[Password:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[List of available infoscreens]]></source>
+<target><![CDATA[Liste des écrans d'information disponibles]]></target>
 </trans-unit>
 
 <trans-unit id="11">
-<source><![CDATA[Please provide your username.]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Configure]]></source>
+<target><![CDATA[Configurer]]></target>
 </trans-unit>
 
 <trans-unit id="12">
+<source><![CDATA[Please provide your username.]]></source>
+<target><![CDATA[Veuillez remplisser votre nom d'utilisateur.]]></target>
+</trans-unit>
+
+<trans-unit id="13">
 <source><![CDATA[Please provide your password.]]></source>
+<target><![CDATA[Veuillez remplisser votre mot de passe.]]></target>
+</trans-unit>
+
+<trans-unit id="14">
+<source><![CDATA[Invalid credentials!]]></source>
+<target><![CDATA[Identifiants invalides!]]></target>
+</trans-unit>
+
+<trans-unit id="15">
+<source><![CDATA[NMBS:]]></source>
+<target><![CDATA[SNCB:]]></target>
+</trans-unit>
+
+<trans-unit id="16">
+<source><![CDATA[MIVB:]]></source>
+<target><![CDATA[STIB:]]></target>
+</trans-unit>
+
+<trans-unit id="17">
+<source><![CDATA[De Lijn:]]></source>
+<target><![CDATA[De Lijn:]]></target>
+</trans-unit>
+
+<trans-unit id="18">
+<source><![CDATA[Currently selected:]]></source>
+<target><![CDATA[Actuellement selectionné(s):]]></target>
+</trans-unit>
+
+<trans-unit id="19">
+<source><![CDATA[Save]]></source>
+<target><![CDATA[Enregistrer]]></target>
+</trans-unit>
+
+<trans-unit id="20">
+<source><![CDATA[Configure stops]]></source>
+<target><![CDATA[Configurer les arrêts]]></target>
+</trans-unit>
+
+<trans-unit id="21">
+<source><![CDATA[Title:]]></source>
+<target><![CDATA[Titre:]]></target>
+</trans-unit>
+
+<trans-unit id="22">
+<source><![CDATA[Please provide a title.]]></source>
+<target><![CDATA[Veuillez donner un titre.]]></target>
+</trans-unit>
+
+<trans-unit id="23">
+<source><![CDATA[Message of the day:]]></source>
+<target><![CDATA[Message du jour:]]></target>
+</trans-unit>
+
+<trans-unit id="24">
+<source><![CDATA[Please provide a message of the day.]]></source>
+<target><![CDATA[Veuillez donner un message du jour.]]></target>
+</trans-unit>
+
+<trans-unit id="25">
+<source><![CDATA[Number of rows to show for each stop:]]></source>
+<target><![CDATA[Nombre de lignes à afficher pour chaque arrêt:]]></target>
+</trans-unit>
+
+<trans-unit id="26">
+<source><![CDATA[Please provide a valid number.]]></source>
+<target><![CDATA[Veuillez donner un numéro valide.]]></target>
+</trans-unit>
+
+<trans-unit id="27">
+<source><![CDATA[Value must be between 2 and 15.]]></source>
+<target><![CDATA[La valeur doit être comprise entre 2 et 15.]]></target>
+</trans-unit>
+
+<trans-unit id="28">
+<source><![CDATA[Interval in seconds to circulate through the different stops:]]></source>
+<target><![CDATA[Intervalle de circuler à travers les arrêts (en secondes):]]></target>
+</trans-unit>
+
+<trans-unit id="29">
+<source><![CDATA[Value must be between 10 and 120.]]></source>
+<target><![CDATA[La valeur doit être comprise entre 10 et 120.]]></target>
+</trans-unit>
+
+<trans-unit id="30">
+<source><![CDATA[Infoscreen language:]]></source>
+<target><![CDATA[Langue de l'écran d'information:]]></target>
+</trans-unit>
+
+<trans-unit id="31">
+<source><![CDATA[Color theme:]]></source>
+<target><![CDATA[Couleur de thème:]]></target>
+</trans-unit>
+
+<trans-unit id="32">
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white, #000000 is black etc ...]]></source>
+<target><![CDATA[Ne correspond pas à une valeur de couleur HTML. #FFFFFF est blanc, #000000 est noir etc ...]]></target>
+</trans-unit>
+
+<trans-unit id="33">
+<source><![CDATA[Configuration]]></source>
+<target><![CDATA[Configuration]]></target>
+</trans-unit>
+
+<trans-unit id="34">
+<source><![CDATA[Upload your logo:]]></source>
+<target><![CDATA[Télécharger votre logo:]]></target>
+</trans-unit>
+
+<trans-unit id="35">
+<source><![CDATA[Please provide a valid color.]]></source>
+<target><![CDATA[Veuillez donner une couleur valide.]]></target>
+</trans-unit>
+
+<trans-unit id="37">
+<source><![CDATA[Interval in seconds to cycle through the different stops:]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="38">
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="39">
+<source><![CDATA[You have to provide a file to upload or file is too big.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="40">
+<source><![CDATA[File size must be below 500kB.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="41">
+<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="42">
+<source><![CDATA[Logo]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="43">
+<source><![CDATA[This infoscreen has been configured successfully.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="44">
+<source><![CDATA[<- Back to list of available infoscreens]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="45">
+<source><![CDATA[<- Logout]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="46">
+<source><![CDATA[Success!]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="47">
+<source><![CDATA[There are no infoscreens available to configure!]]></source>
 <target><![CDATA[]]></target>
 </trans-unit>
 </body>

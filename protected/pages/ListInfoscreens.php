@@ -45,9 +45,15 @@ class ListInfoscreens extends TPage {
 				// missing customer in session, redirect to login page
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 			} else {
-				$customer = $this->Session['customer'];					
-        		$this->DataGrid->DataSource = $this->getInfoscreens($customer);
-        		$this->DataGrid->dataBind();
+				$customer = $this->Session['customer'];	
+				$infoscreens = $this->getInfoscreens($customer);
+				if(empty($infoscreens)) {
+					$this->Empty->Data = Prado::localize("There are no infoscreens available to configure!");
+					$this->Empty->Style = "";
+				} else {
+        			$this->DataGrid->DataSource = $infoscreens;
+        			$this->DataGrid->dataBind();
+				}
 			}
     	}
 	}
