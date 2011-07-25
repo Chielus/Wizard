@@ -1,8 +1,9 @@
 <?php
 
-class InfoscreenConfiguration extends TPage
-{
-	// 18n
+class InfoscreenConfiguration extends TPage {
+	
+	// On page creation the constructor checks if a language is set.
+    // If so we set the globalization (internationalization) for this page.
    	public function __construct() {   		
         parent::__construct();
 
@@ -18,7 +19,7 @@ class InfoscreenConfiguration extends TPage
         }
   	}	   
    
-   	// css
+   	// Add the available stylesheet to the page.
     public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -26,19 +27,15 @@ class InfoscreenConfiguration extends TPage
  		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
     }
 
-	// load page and fill in configuration details
-	// missing customer -> login
-	// missing infoscreendi -> list
-	// else OK
    	public function onLoad($param) {
     	parent::onLoad($param);
     	if(!$this->IsPostBack) {
     		$this->Session->open();			
 			if(!isset($this->Session['customer'])) {
-				// missing customer in session, redirect to login page
+				// There customer is missing in the session, redirect to login page.
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 			} else if(!isset($this->Session['infoscreenid'])) {
-				// missing infoscreenid in session, redirect to list
+				// The infoscreenid is missing in the session, redirect to list.
 				$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 			} else {
 				$customer = $this->Session['customer'];
@@ -57,18 +54,17 @@ class InfoscreenConfiguration extends TPage
     	}
    	}
 
-	// save configuration details
+	// Event handler for the OnClick event of the save button.
 	public function saveConfiguration($sender, $param) {
 		$this->Session->open();			
 		if(!isset($this->Session['customer'])) {
-			// missing customer in session, redirect to login page
+			// There customer is missing in the session, redirect to login page.
 			$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 		} else if(!isset($this->Session['infoscreenid'])) {
-			// missing infoscreenid in session, redirect to list
+			// The infoscreenid is missing in the session, redirect to list.
 			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 		} else {
-			if ($this->IsValid) // check if input validation is successful
-			{
+			if ($this->Page->IsValid)	{
 				$customer = $this->Session['customer'];
 				$infoscreenid = $this->Session['infoscreenid'];
 				$infoscreen = $customer->getInfoscreen($infoscreenid);

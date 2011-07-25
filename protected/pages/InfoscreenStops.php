@@ -1,8 +1,16 @@
 <?php
-class InfoscreenStops extends TPage
-{
+class InfoscreenStops extends TPage {
+	// Selected station information is saved in a hidden text field.
+	// This is needed because the full list of stations in a TListBox isn't 
+	// accessible on the server side. By adding a selected station (e.g. ;Torhout;)
+	// to this text field and removing stations (e.g Lichtervelde) from this text
+	// field it's always up to date.
+	// An example of the value of the hidden text field at any point can be:
+	// ;;Torhout;Brugge;;Roeselare;;Deinze;;;
+	// This string can easily be exploded to get the needed data.
 	
-	// i18n
+	// On page creation the constructor checks if a language is set.
+    // If so we set the globalization (internationalization) for this page.
 	public function __construct() {   		
         parent::__construct();
 
@@ -18,7 +26,7 @@ class InfoscreenStops extends TPage
         }
    }				
 
-	// css
+	// Add the available stylesheet to the page.
 	public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -26,9 +34,8 @@ class InfoscreenStops extends TPage
  		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
     }
 
-	// register a prado rendered componentid so we can access this easily using javascript
-	// for some reason a randered prado component has an id slightly modified
-	// than the one specified
+	// Register a prado rendered component in <head> so it's accessible using javascript.
+	// For some reason a rendered prado component has an id slightly modified compared to its original.
 	private function registerScriptClientId($component){
 		$cs = $this->Page->ClientScript;
 		if (!$cs->isHeadScriptRegistered('ClientID')){
@@ -39,11 +46,14 @@ class InfoscreenStops extends TPage
 		}
 	}
 	
+	// Get the language.
+	// Used in javascript to fetch the station names in the right language.
 	public function getLang() {
 		$this->Session->open();
 		return $this->Session['lang'];
 	}
 	
+	// Fetch station information from the iRail API.
 	private function curl_download($url) { 
 	    if (!function_exists('curl_init')){
 	        die('Sorry cURL is not installed!');
@@ -63,8 +73,8 @@ class InfoscreenStops extends TPage
 	    return $output;
 	}
 	
-	// retreive stations
-	protected function getStations($system, $lang) {
+	// Retreive stations.
+	private function getStations($system, $lang) {
 		$data = array();
 		
 		$base = 'http://api.irail.be/stations/';
@@ -84,7 +94,7 @@ class InfoscreenStops extends TPage
 		return $data;
 	}
 
-	// register controls for clientside scripting
+	// Register controls for clientside scripting.
 	public function onPreRender($param){
 		parent::onPreRender($param);
 	
@@ -99,18 +109,19 @@ class InfoscreenStops extends TPage
 		$this->registerScriptClientId($this->HiddenStations);
 	}
 
-	// missing customer -> login
-	// missing infoscreendi -> list
-	// else OK
 	public function onLoad($param) {
 	    	parent::onLoad($param);
-	    	if(!$this->IsPostBack) {			
+	    	if(!$this->IsPostBack && !$this->IsCallBack) {
+	    		// It is possible that the session expires during configuration.
+    			// Therefore we always check the customer and infoscreenid in the session.
+    			// If redirection is needed we do so.
+					
 				$this->Session->open();			
 				if(!isset($this->Session['customer'])) {
-					// missing customer in session, redirect to login page
+					// There customer is missing in the session, redirect to login page.
 					$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 				} else if(!isset($this->Session['infoscreenid'])) {
-					// missing infoscreenid in session, redirect to list
+					// The infoscreenid is missing in the session, redirect to list.
 					$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 				} else {
 					$this->HiddenStations->Value = "";
@@ -118,25 +129,34 @@ class InfoscreenStops extends TPage
 	    	}
 	}
 	
+	// Event handler for the OnClick event of the save button.
 	public function saveStops($sender, $param) {
+		// It is possible that the session expires during configuration.
+    	// Therefore we always check the customer and infoscreenid in the session.
+    	// If redirection is needed we do so.
+		
 		$this->Session->open();			
 		if(!isset($this->Session['customer'])) {
-			// missing customer in session, redirect to login page
+			// There customer is missing in the session, redirect to login page.
 			$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 		} else if(!isset($this->Session['infoscreenid'])) {
-			// missing infoscreenid in session, redirect to list
+			// The infoscreenid is missing in the session, redirect to list.
 			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 		} else {
+			// Get needed information from session.
 			$customer = $this->Session['customer'];
 			$infoscreenid = $this->Session['infoscreenid'];
 			$infoscreen = $customer->getInfoscreen($infoscreenid);	
-						
+			
+			// Change the infoscreen data in the database using the provided model.
+			// We retreive the selected stations from our hidden text field (see top of this page).
 			$infoscreen->removeAllStations();
 			$stations = explode(";", $this->HiddenStations->Value);
 			foreach($stations as $id) {
 				$infoscreen->addStation($id);
 			}
 
+			// Redirect to the next step of the configuration.
 			$this->Response->redirect($this->Service->constructUrl('InfoscreenConfiguration', null, true));
 		}		
 	}

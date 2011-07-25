@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="de" datatype="plaintext" original="messages" date="2011-07-22T16:55:44Z" product-name="messages">
+ <file source-language="EN" target-language="de" datatype="plaintext" original="messages" date="2011-07-25T13:09:51Z" product-name="messages">
   <body>
   
 <trans-unit id="2">
@@ -174,33 +174,78 @@
 <target><![CDATA[Bitte geben Sie eine gültige Farbe ein.]]></target>
 </trans-unit>
 
-<trans-unit id="36">
+<trans-unit id="37">
+<source><![CDATA[Interval to circulate through the different stops (in seconds):]]></source>
+<target><![CDATA[Interval um durch die verschiedenen Haltestellen zu zirkulieren (in Sekunden):]]></target>
+</trans-unit>
+
+<trans-unit id="38">
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white, #000000 is black etc ...]]></source>
+<target><![CDATA[Kein gültiger HTML-Farbwert. #FFFFFF ist weiß, #000000 ist schwarz etc ...]]></target>
+</trans-unit>
+
+<trans-unit id="39">
+<source><![CDATA[You have to provide a file to upload or file is too big.]]></source>
+<target><![CDATA[Sie müssen eine Datei zur Verfügung zu hochladen oder die Datei ist zu groß.]]></target>
+</trans-unit>
+
+<trans-unit id="40">
+<source><![CDATA[File size must be below 500kB.]]></source>
+<target><![CDATA[Die Datei darf maximal 500 kB groß sein.]]></target>
+</trans-unit>
+
+<trans-unit id="41">
+<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG.]]></source>
+<target><![CDATA[Die Datei muss vom Typ .JPG, .JPEG, .GIF, .BMP oder .PNG sein.]]></target>
+</trans-unit>
+
+<trans-unit id="42">
+<source><![CDATA[Logo]]></source>
+<target><![CDATA[Logo]]></target>
+</trans-unit>
+
+<trans-unit id="43">
+<source><![CDATA[This infoscreen has been configured successfully.]]></source>
+<target><![CDATA[Diese Info-Bildschirm wurde erfolgreich konfiguriert.]]></target>
+</trans-unit>
+
+<trans-unit id="44">
+<source><![CDATA[<- Back to list of available infoscreens]]></source>
+<target><![CDATA[<- Zurück zur Liste der verfügbaren Info-Bildschirme]]></target>
+</trans-unit>
+
+<trans-unit id="45">
+<source><![CDATA[<- Logout]]></source>
+<target><![CDATA[<- Abmelden]]></target>
+</trans-unit>
+
+<trans-unit id="46">
+<source><![CDATA[Success!]]></source>
+<target><![CDATA[Erfolg!]]></target>
+</trans-unit>
+
+<trans-unit id="47">
+<source><![CDATA[There are no infoscreens available to configure!]]></source>
+<target><![CDATA[Es gibt keine Info-Bildschirme zu konfigurieren!]]></target>
+</trans-unit>
+
+<trans-unit id="48">
+<source><![CDATA[Please provide a language.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="49">
 <source><![CDATA[Interval in seconds to cycle through the different stops:]]></source>
 <target><![CDATA[]]></target>
 </trans-unit>
 
-<trans-unit id="37">
+<trans-unit id="50">
 <source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></source>
 <target><![CDATA[]]></target>
 </trans-unit>
 
-<trans-unit id="38">
-<source><![CDATA[You have to provide a file to upload or file is too big.]]></source>
-<target><![CDATA[]]></target>
-</trans-unit>
-
-<trans-unit id="39">
-<source><![CDATA[File size must be below 500kB.]]></source>
-<target><![CDATA[]]></target>
-</trans-unit>
-
-<trans-unit id="40">
+<trans-unit id="51">
 <source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></source>
-<target><![CDATA[]]></target>
-</trans-unit>
-
-<trans-unit id="41">
-<source><![CDATA[Logo]]></source>
 <target><![CDATA[]]></target>
 </trans-unit>
 </body>

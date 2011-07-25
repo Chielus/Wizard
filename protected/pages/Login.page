@@ -6,12 +6,14 @@
 
 <com:TLabel Text="<%[Wizard language:]%>" />
 <br/>
-<com:TDropDownList Id="Lang" />
+<com:TActiveDropDownList Id="Lang" OnSelectedIndexChanged="changeLang" />
 <br/>
 <br/>
  
 <span><%[Username:]%></span>
-<com:TRequiredFieldValidator ControlToValidate="Username"
+<com:TRequiredFieldValidator
+	ControlToValidate="Username"
+	ValidationGroup="Group1"
     ErrorMessage="<%[Please provide your username.]%>" 
     Display="Dynamic" />
 <br/>
@@ -19,7 +21,9 @@
  
 <br/>
 <span><%[Password:]%></span>
-<com:TRequiredFieldValidator ControlToValidate="Password"
+<com:TRequiredFieldValidator
+	ControlToValidate="Password"
+	ValidationGroup="Group1"
     ErrorMessage="<%[Please provide your password.]%>" 
     Display="Dynamic" />
 <br/>
@@ -27,7 +31,7 @@
  
 <br/>
 <br/>
-<com:TButton ButtonType="Submit" Text="<%[Login]%>" OnClick="loginButtonClicked" />
+<com:TButton ValidationGroup="Group1" ButtonType="Submit" Text="<%[Login]%>" OnClick="loginButtonClicked" />
 <com:TLabel Style="color: red" Id="Message" />
 
 </com:TContent>

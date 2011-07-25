@@ -175,59 +175,60 @@
 </trans-unit>
 
 <trans-unit id="37">
-<source><![CDATA[Interval in seconds to cycle through the different stops:]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Interval to circulate through the different stops (in seconds):]]></source>
+<target><![CDATA[Intervalle de circuler à travers les arrêts (en secondes):]]></target>
 </trans-unit>
 
 <trans-unit id="38">
-<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white, #000000 is black etc ...]]></source>
+<target><![CDATA[Ne correspond pas à une valeur de couleur HTML. #FFFFFF est blanc, #000000 est noir etc ...]]></target>
 </trans-unit>
 
 <trans-unit id="39">
 <source><![CDATA[You have to provide a file to upload or file is too big.]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[Vous devez sélectionner un fichier à télécharger ou le fichier est trop grand.]]></target>
 </trans-unit>
 
 <trans-unit id="40">
 <source><![CDATA[File size must be below 500kB.]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[La taille du fichier doit être inférieure à 500 ko.]]></target>
 </trans-unit>
 
 <trans-unit id="41">
-<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></source>
-<target><![CDATA[]]></target>
+<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG.]]></source>
+<target><![CDATA[Le fichier doit être de type .JPG, .JPEG, .GIF, .BMP ou .PNG.]]></target>
 </trans-unit>
 
 <trans-unit id="42">
 <source><![CDATA[Logo]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[Logo]]></target>
 </trans-unit>
 
 <trans-unit id="43">
 <source><![CDATA[This infoscreen has been configured successfully.]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[Cet écran d'information a été configuré avec succès.]]></target>
 </trans-unit>
 
 <trans-unit id="44">
 <source><![CDATA[<- Back to list of available infoscreens]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[<- Retour à la liste des écrans d'information disponibles]]></target>
 </trans-unit>
 
 <trans-unit id="45">
 <source><![CDATA[<- Logout]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[<- Déconnexion]]></target>
 </trans-unit>
 
 <trans-unit id="46">
 <source><![CDATA[Success!]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[Succès!]]></target>
 </trans-unit>
 
 <trans-unit id="47">
 <source><![CDATA[There are no infoscreens available to configure!]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[Il n'y a pas d'écrans d'info pour configurer!]]></target>
 </trans-unit>
+
 </body>
  </file>
 </xliff>

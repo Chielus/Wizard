@@ -3,14 +3,22 @@ Prado::Using('System.Web.UI.ActiveControls.*');
 
 class InfoscreenLogo extends TPage {
 	
-	// temporary folder for file uploads
-	// make sure this folder is writable and accessible by the server
-	// TODO: change directory so Infoscreen module can access it
+	// Temporary folder for file uploads.
+	// Make sure this folder is writable and accessible by the server.
+	// TODO: Change directory so the Infoscreen module can access it.
 	private $temp = "/tmp/wizard/";
 	
-	// i18n
+	private $fileLogo;
+	
+	// On page creation the constructor checks if a language is set.
+    // If so we set the globalization (internationalization) for this page.
 	public function __construct() {   		
         parent::__construct();
+		
+		// Check if our temp dir already exists.
+		if(!is_dir($this->temp)) {
+			mkdir($this->temp);
+		}
 
 		$this->Session->open();
 		if(isset($this->Session['lang'])) {
@@ -24,7 +32,7 @@ class InfoscreenLogo extends TPage {
         }
    }	   
    
-   //css
+    // Add the available stylesheet to the page.
     public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -32,52 +40,77 @@ class InfoscreenLogo extends TPage {
  		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
     }
 	
-	// upload file to $temp and display
-	public function fileUploaded($sender,$param) {
-		if($this->Logo->HasFile) {
-			$type = $this->Logo->FileType;
+	// Upload the image to the temporary directory.
+	// Display the image in the TActiveImage control.
+	public function fileUploaded($sender, $param) {
+		$this->Session->open();
+		
+		if($sender->HasFile) {
+			$type = $sender->FileType;
 
 			if(($type != 'image/bmp') && ($type != 'image/gif') && ($type != 'image/jpeg') && ($type != 'image/png') ) {
-	            $this->typeFileValidator->setIsValid(false);
-	        } else if($this->Logo->FileSize > (1024 * 500)) {
-	            $this->sizeFileValidator->setIsValid(false);
+	            unset($this->Session['fileLogo']);
+				$this->Status->Text = "Invalid file type.";
+	        } else if($sender->FileSize > (1024 * 500)) {
+	            unset($this->Session['fileLogo']);
+				$this->Status->Text = "File size is too big.";
 	        } else {
-	        	$this->Logo->saveAs($this->temp . $this->Logo->FileName);
-				
-				$this->Display->ImageUrl = $this->Page->publishFilePath('/tmp/wizard/' . $this->Logo->FileName);
-				$this->Display->Style = "display: block";				
+	        	if($this->Logo->saveAs($this->temp . $this->Logo->FileName)) {				
+					$this->Display->ImageUrl = $this->Page->publishFilePath('/tmp/wizard/' . $sender->FileName);
+					$this->Display->Style = "display: block";
+					
+					$this->Session['fileLogo'] = $sender->FileName;
+					$this->Status->Text = "File OK!";
+				} else {
+					unset($this->Session['fileLogo']);
+					$this->Status->Text = "Error: couldn't save file.";
+				}
 	        }		
 		} else {
-			$this->isFileValidator->setIsValid(false);
-		}	
+			unset($this->Session['fileLogo']);
+			$this->Status->Text = "No file selected.";
+		}
     }
 	
-	// missing customer -> login
-	// missing infoscreendi -> list
-	// else OK
 	public function onLoad($param) {
     	parent::onLoad($param);
     	if(!$this->IsPostBack) {
     		$this->Session->open();			
 			if(!isset($this->Session['customer'])) {
-				// missing customer in session, redirect to login page
+				// There customer is missing in the session, redirect to login page.
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 			} else if(!isset($this->Session['infoscreenid'])) {
-				// missing infoscreenid in session, redirect to list
+				// The infoscreenid is missing in the session, redirect to list.
 				$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
-			} else {
-				// OK
-			}
+			} 
     	}
    	}
 	
+	// Event handler for the OnClick event of the save button.
 	public function submitLogo($sender, $param) {
-		$customer = $this->Session['customer'];
-		$infoscreenid = $this->Session['infoscreenid'];
-		$infoscreen = $customer->getInfoscreen($infoscreenid);
-		
-	    $infoscreen->setSettingValue("logo", $this->Logo->FileName);				
-		$this->Response->redirect($this->Service->constructUrl('Success', null, true));
+		$this->Session->open();			
+		if(!isset($this->Session['customer'])) {
+			// There customer is missing in the session, redirect to login page.
+			$this->Response->redirect($this->Service->constructUrl('Login', null, true));
+		} else if(!isset($this->Session['infoscreenid'])) {
+			// The infoscreenid is missing in the session, redirect to list.
+			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
+		} else {
+			if(isset($this->Session['fileLogo'])) {
+				$customer = $this->Session['customer'];
+				$infoscreenid = $this->Session['infoscreenid'];
+				$infoscreen = $customer->getInfoscreen($infoscreenid);
+				
+			    $infoscreen->setSettingValue("logo", $this->Session['fileLogo']);				
+				$this->Response->redirect($this->Service->constructUrl('Success', null, true));
+				
+				// Reset the file value in case the user returns to his page.
+				// Otherwise the file would still be available.
+				unset($this->Session['fileLogo']);
+			} else {
+				$this->Status->Text = "No file selected.";
+			}
+		}
 	}
 	
 }

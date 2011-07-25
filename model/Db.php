@@ -12,9 +12,9 @@ class Db {
 	// construct database connection
 	function __construct() {
 		$dbhost = 'localhost';
-		$dbuser = 'flatturtle';
+		$dbuser = 'ft';
 		$dbpass = 'Cha6U6aTaGE3';
-		$db = 'flatturtle';		
+		$db = 'ft';		
 		
  		$this->dbconn = new mysqli($dbhost, $dbuser, $dbpass, $db);
 	}

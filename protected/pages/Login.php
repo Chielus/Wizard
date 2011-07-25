@@ -1,7 +1,11 @@
 <?php
-class Login extends TPage
-{
- 	// i18n
+// Include this to use active controls like TActiveDropDownList.
+Prado::Using('System.Web.UI.ActiveControls.*');
+
+class Login extends TPage {
+	
+   // On page creation the constructor checks if a language is set.
+   // If so we set the globalization (internationalization) for this page.
    public function __construct() {   		
         parent::__construct();
 
@@ -17,21 +21,29 @@ class Login extends TPage
         }
    }
 
-
    public function onLoad($param) {
     	parent::onLoad($param);
 		
+		// On page load we delete available customer and infoscreen information.
+		// The user needs to be authenticated  again.
 		$this->Session->open();
 		unset($this->Session['customer']);
-		unset($this->Session['lang']);	
+		unset($this->Session['infoscreenid']);	
 		
-    	if(!$this->IsPostBack) {	
+		// Bind the available languages to the TActiveDropDownList.
+		// Select the current active language.
+    	if(!$this->Page->IsCallback && !$this->IsPostBack) {
 			$this->Lang->DataSource = array("en" => "EN", "nl" => "NL", "de" => "DE", "fr" => "FR");
-        	$this->Lang->dataBind();			
+        	$this->Lang->dataBind();
+			
+			$this->Session->open();
+            if(isset($this->Session['lang'])) {
+            	$this->Lang->SelectedValue = $this->Session['lang'];
+			}	
     	}
    }
 
-	
+	// Add the available stylesheet to the page.
     public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -39,15 +51,20 @@ class Login extends TPage
  		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
     }
 	
-    /**
-     * Event handler for the OnClick event of the login button.
-     * @param TButton the button triggering the event
-     * @param TEventParameter event parameter (null here)    
-     */
+	// Event handler for the OnSelectedIndexChanged event of the TActiveDropDownList.
+	// Note that the control is an active control.
+	// The page is being reloaded the change language of the page.
+	public function changeLang($param) {
+		$this->Session->open();	
+		$this->Session['lang'] = $this->Lang->SelectedValue;
+	
+		$this->Response->reload();	
+	}
+	
+    // Event handler for the OnClick event of the login button.
     public function loginButtonClicked($sender, $param) {
-        if ($this->IsValid)  // check if input validation is successful
-        {
-            	// obtain the username and password from the textboxes
+        if ($this->Page->IsValid) {
+           	// Obtain the username and password and check them.
 	    	$username = $this->Username->Text;
 	    	$password = $this->Password->Text;
             
@@ -55,26 +72,21 @@ class Login extends TPage
         }
     }
     
-    protected function checkCredentials($username, $password)
-    {
+    private function checkCredentials($username, $password) {
       $hash = md5($password);
       $customer = new Customer($username, $hash);
 	  
 	  if($customer->isValid()) {
 		$this->Session->open();
 		$this->Session['customer'] = $customer;
-		$this->Session['lang'] = $this->Lang->Data;
 		
-		// reset faulty message
+		// Reset a possible faulty message.
 		$this->Message->Text = '';
 		
-		// internationalization
-		$globalization = $this->getApplication()->getGlobalization();
-		$globalization->setCulture($this->Lang->Data);
-		
-		// user has been authenticated, redirect to list of infoscreens
+		// The user has been authenticated, redirect to list of infoscreens.
 	  	$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 	  } else {
+	  	// Authentication failed, display message.
 	  	$this->Message->Text = Prado::localize("Invalid credentials!");
 	  }
     }

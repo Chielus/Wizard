@@ -66,7 +66,9 @@
 		  		.text(value.name)
 		  		.appendTo('#' + ClientID.ListMIVB);
 		  });	  
-		});	
+		});
+		
+		// TODO: De Lijn
 	}
 	
     function getSelectedAddList(event) {

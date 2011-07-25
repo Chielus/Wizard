@@ -1,8 +1,10 @@
 <?php
 
 class ListInfoscreens extends TPage {
-	
-   public function __construct() {   		
+
+	// On page creation the constructor checks if a language is set.
+    // If so we set the globalization (internationalization) for this page.
+   	public function __construct() {   		
         parent::__construct();
 
 		$this->Session->open();
@@ -15,8 +17,9 @@ class ListInfoscreens extends TPage {
         if(!is_null($lang)) {
             $this->getApplication()->getGlobalization()->setCulture($lang);
         }
-   }
+   	}
 
+	// Add the available stylesheet to the page.
 	public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
@@ -24,7 +27,8 @@ class ListInfoscreens extends TPage {
  		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
     }
 	
-	protected function getInfoscreens($customer) {
+	// Retreive the infoscreen of the current user from the database and return them.
+	private function getInfoscreens($customer) {
 		$data = array();
 		
 		$infoscreenids = $customer->getInfoscreenIds();
@@ -38,11 +42,10 @@ class ListInfoscreens extends TPage {
 
 	public function onLoad($param) {
     	parent::onLoad($param);
-    	if(!$this->IsPostBack) {
+    	if(!$this->IsPostBack && !$this->IsCallBack) {			
     		$this->Session->open();
-			
 			if(!isset($this->Session['customer'])) {
-				// missing customer in session, redirect to login page
+				// There customer is missing in the session, redirect to login page.
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 			} else {
 				$customer = $this->Session['customer'];	
@@ -51,6 +54,7 @@ class ListInfoscreens extends TPage {
 					$this->Empty->Data = Prado::localize("There are no infoscreens available to configure!");
 					$this->Empty->Style = "";
 				} else {
+					// Bind the available infoscreens to the our grid.
         			$this->DataGrid->DataSource = $infoscreens;
         			$this->DataGrid->dataBind();
 				}
@@ -58,6 +62,7 @@ class ListInfoscreens extends TPage {
     	}
 	}
 	
+	// Event handler for the OnClick event of the configure button.
 	public function configureInfoscreen($sender, $param) {
 		$infoscreenid = $param->getCommandParameter();
 		

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="nl" datatype="plaintext" original="messages" date="2011-07-21T23:59:00Z" product-name="messages">
+ <file source-language="EN" target-language="nl" datatype="plaintext" original="messages" date="2011-07-25T10:16:08Z" product-name="messages">
   <body>
   
 <trans-unit id="2">
@@ -171,6 +171,61 @@
 <trans-unit id="35">
 <source><![CDATA[Please provide a valid color.]]></source>
 <target><![CDATA[Geef aub een geldige kleur in.]]></target>
+</trans-unit>
+
+<trans-unit id="37">
+<source><![CDATA[Interval to circulate through the different stops (in seconds):]]></source>
+<target><![CDATA[Interval om door de haltes te circuleren (in seconden):]]></target>
+</trans-unit>
+
+<trans-unit id="38">
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white, #000000 is black etc ...]]></source>
+<target><![CDATA[Geen geldige HTML kleurwaarde. #FFFFFF is wit, #000000 is zwart enz ...]]></target>
+</trans-unit>
+
+<trans-unit id="39">
+<source><![CDATA[You have to provide a file to upload or file is too big.]]></source>
+<target><![CDATA[Selecteer een bestand om te uploaden of het bestand is te groot.]]></target>
+</trans-unit>
+
+<trans-unit id="40">
+<source><![CDATA[File size must be below 500kB.]]></source>
+<target><![CDATA[Bestandsgrootte moet kleiner dan 500 kB zijn.]]></target>
+</trans-unit>
+
+<trans-unit id="41">
+<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG.]]></source>
+<target><![CDATA[Bestandstype moet .JPG, .JPEG, .GIF, .BMP of .PNG zijn.]]></target>
+</trans-unit>
+
+<trans-unit id="42">
+<source><![CDATA[Logo]]></source>
+<target><![CDATA[Logo]]></target>
+</trans-unit>
+
+<trans-unit id="43">
+<source><![CDATA[This infoscreen has been configured successfully.]]></source>
+<target><![CDATA[Dit infoscherm is succesvol geconfigureerd.]]></target>
+</trans-unit>
+
+<trans-unit id="44">
+<source><![CDATA[<- Back to list of available infoscreens]]></source>
+<target><![CDATA[<- Terug naar de lijst met beschikbare infoschermen]]></target>
+</trans-unit>
+
+<trans-unit id="45">
+<source><![CDATA[<- Logout]]></source>
+<target><![CDATA[<- Logout]]></target>
+</trans-unit>
+
+<trans-unit id="46">
+<source><![CDATA[Success!]]></source>
+<target><![CDATA[Succes!]]></target>
+</trans-unit>
+
+<trans-unit id="47">
+<source><![CDATA[There are no infoscreens available to configure!]]></source>
+<target><![CDATA[Er zijn geen infoschermen beschikbaar om te configureren!]]></target>
 </trans-unit>
 </body>
  </file>

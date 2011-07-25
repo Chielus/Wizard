@@ -36,6 +36,9 @@
 		</prop:ItemTemplate>
 	</com:TTemplateColumn>
 </com:TDataGrid>
+
+</br>
+<com:THyperLink Text="<%[<- Logout]%>" NavigateUrl="index.php?page=Login" />
  
 </com:TContent>
 

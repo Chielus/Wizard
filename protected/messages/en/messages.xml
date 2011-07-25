@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="en" datatype="plaintext" original="messages" date="2011-07-22T15:34:46Z" product-name="messages">
+ <file source-language="EN" target-language="en" datatype="plaintext" original="messages" date="2011-07-25T17:59:20Z" product-name="messages">
   <body>
   
 <trans-unit id="2">
@@ -135,8 +135,8 @@
 </trans-unit>
 
 <trans-unit id="28">
-<source><![CDATA[Interval in seconds to cycle through the different stops:]]></source>
-<target><![CDATA[Interval in seconds to cycle through the different stops:]]></target>
+<source><![CDATA[Interval to circulate through the different stops (in seconds):]]></source>
+<target><![CDATA[Interval to circulate through the different stops (in seconds):]]></target>
 </trans-unit>
 
 <trans-unit id="29">
@@ -155,8 +155,8 @@
 </trans-unit>
 
 <trans-unit id="32">
-<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></source>
-<target><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></target>
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black etc ...]]></source>
+<target><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black etc ...]]></target>
 </trans-unit>
 
 <trans-unit id="33">
@@ -194,14 +194,9 @@
 <target><![CDATA[You have to provide a file to upload.]]></target>
 </trans-unit>
 
-<trans-unit id="40">
-<source><![CDATA[File size must be under 500kB.]]></source>
-<target><![CDATA[File size must be under 500kB.]]></target>
-</trans-unit>
-
 <trans-unit id="41">
-<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></source>
-<target><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG).]]></target>
+<source><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG.]]></source>
+<target><![CDATA[File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG.]]></target>
 </trans-unit>
 
 <trans-unit id="42">
@@ -242,6 +237,22 @@
 <trans-unit id="49">
 <source><![CDATA[File size must be below 500kB.]]></source>
 <target><![CDATA[File size must be below 500kB.]]></target>
+</trans-unit>
+
+
+<trans-unit id="50">
+<source><![CDATA[Please provide a language.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="51">
+<source><![CDATA[Interval in seconds to cycle through the different stops:]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="52">
+<source><![CDATA[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]]></source>
+<target><![CDATA[]]></target>
 </trans-unit>
 </body>
  </file>
