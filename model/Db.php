@@ -13,7 +13,7 @@ class Db {
 	function __construct() {
 		$dbhost = 'localhost';
 		$dbuser = 'ft';
-		$dbpass = 'Cha6U6aTaGE3';
+		$dbpass = '...';
 		$db = 'ft';		
 		
  		$this->dbconn = new mysqli($dbhost, $dbuser, $dbpass, $db);
