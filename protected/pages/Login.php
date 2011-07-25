@@ -47,8 +47,16 @@ class Login extends TPage {
     public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
-		$url = 'css/style.css';
- 		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+		$useragent = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('|MSIE ([0-9].[0-9]{1,2})|', $useragent, $matched)) {
+    		$url = 'css/style.css';
+			$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+    		$url = 'css/style-ie.css';
+			$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+		} else {
+			$url = 'css/style.css';
+			$this->Page->ClientScript->registerStyleSheetFile($url, $url);			
+		}		
     }
 	
 	// Event handler for the OnSelectedIndexChanged event of the TActiveDropDownList.

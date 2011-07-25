@@ -20,11 +20,19 @@ class ListInfoscreens extends TPage {
    	}
 
 	// Add the available stylesheet to the page.
-	public function onPreRenderComplete($param) {
+    public function onPreRenderComplete($param) {
 		parent::onPreRenderComplete($param);
 
-		$url = 'css/style.css';
- 		$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+		$useragent = $_SERVER['HTTP_USER_AGENT'];
+		if (preg_match('|MSIE ([0-9].[0-9]{1,2})|', $useragent, $matched)) {
+    		$url = 'css/style.css';
+			$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+    		$url = 'css/style-ie.css';
+			$this->Page->ClientScript->registerStyleSheetFile($url, $url);
+		} else {
+			$url = 'css/style.css';
+			$this->Page->ClientScript->registerStyleSheetFile($url, $url);			
+		}		
     }
 	
 	// Retreive the infoscreen of the current user from the database and return them.
