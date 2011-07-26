@@ -46,35 +46,49 @@
 	     	$('#' + ClientID.SelectedMIVB).keydown(removeOptionSelected);
 	      	$('#' + ClientID.SelectedDeLijn).keydown(removeOptionSelected);
 	});
+	
+	function handle(){
+	   alert('k');
+	}
 	    
 	function fillDropDownList() {	
 		$.getJSON('http://api.irail.be/stations/?system=NMBS&format=json&lang=<%= $this->Lang %>', function(data) {
 		  var station = data.station;
+		  $('<option>')
+                .val('NULL')
+                .text('')
+                .appendTo('#' + ClientID.ListNMBS); //default value: NULL
 		  $.each(station, function(index, value) {
 		  	$('<option>')
 		  		.val(value.id)
 		  		.text(value.name)
 		  		.appendTo('#' + ClientID.ListNMBS);
-		  });	  
+		  });
 		});
 		
 		$.getJSON('http://api.irail.be/stations/?system=MIVB&format=json&lang=<%= $this->Lang %>', function(data) {
 		  var station = data.station;
+		  $('<option>')
+                .val('NULL')
+                .text('')
+                .appendTo('#' + ClientID.ListMIVB); //default value: NULL
 		  $.each(station, function(index, value) {
 		  	$('<option>')
 		  		.val(value.id)
 		  		.text(value.name)
 		  		.appendTo('#' + ClientID.ListMIVB);
-		  });	  
+		  });
 		});
 		
 		// TODO: De Lijn
 	}
 	
     function getSelectedAddList(event) {
-	  var element = event.srcElement;
+	  var element = this;
 	  var item = element.options[element.selectedIndex].text;
 	  var value = element.options[element.selectedIndex].value;
+	  
+	  if(value !== "NULL") {
 
 	    if(element.id == ClientID.ListNMBS) {
 	      if($("#" + ClientID.SelectedNMBS + " option[value=\"" + value + "\"]").length == 0) {
@@ -88,8 +102,9 @@
 	      if($("#" + ClientID.SelectedDeLijn + " option[value=\"" + value + "\"]").length == 0) {
 			$("#"  + ClientID.SelectedDeLijn).append('<option value="' + value + '">' + item + '</option>');
 	      }
-	    }		
-	
+	    }
+	  }
+	  
 	   var tVal = $("#" + ClientID.HiddenStations).val();
 	   $("#" + ClientID.HiddenStations).val(tVal + ";" + value + ";");
     }
