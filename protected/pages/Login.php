@@ -39,7 +39,7 @@ class Login extends TPage {
 			$this->Session->open();
             if(isset($this->Session['lang'])) {
             	$this->Lang->SelectedValue = $this->Session['lang'];
-			}	
+            }
     	}
    }
 
@@ -56,7 +56,7 @@ class Login extends TPage {
 		} else {
 			$url = 'css/style.css';
 			$this->Page->ClientScript->registerStyleSheetFile($url, $url);			
-		}		
+		}
     }
 	
 	// Event handler for the OnSelectedIndexChanged event of the TActiveDropDownList.
@@ -91,8 +91,14 @@ class Login extends TPage {
 		// Reset a possible faulty message.
 		$this->Message->Text = '';
 		
-		// The user has been authenticated, redirect to list of infoscreens.
-	  	$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
+        if($customer->getCustomerId() == 0){
+            //root login, redirect to list of customers
+            $this->Response->redirect($this->Service->constructUrl('ListCustomers', null, true));
+        } else {
+            // The user has been authenticated, redirect to list of infoscreens.
+            $this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
+        }
+		
 	  } else {
 	  	// Authentication failed, display message.
 	  	$this->Message->Text = Prado::localize("Invalid credentials!");

@@ -4,11 +4,11 @@
 
 <h2><%[Success!]%></h2>
 
-<com:TLabel Text="<%[This infoscreen has been configured successfully.]%>" />
+<com:TLabel Text="<%[Configuration saved successfully.]%>" />
 
 <br/>
+<com:THyperLink ID="Back" Text="<%[<- Back to list of available infoscreens]%>" NavigateUrl="index.php?page=ListInfoscreens" />
 <br/>
-<com:THyperLink Text="<%[<- Back to list of available infoscreens]%>" NavigateUrl="index.php?page=ListInfoscreens" />
 <br/>
 <com:THyperLink Text="<%[<- Logout]%>" NavigateUrl="index.php?page=Login" />
 

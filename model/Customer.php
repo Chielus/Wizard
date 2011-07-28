@@ -57,6 +57,17 @@ class Customer {
 			}
 		}
 	}
+    
+    public function setUsername($username) {        
+        $db = new Db();
+        $this->username = $username;
+        $db->setCustomerUsername($this->customerid,$username);
+    }
+    
+    public function setPassword($password) {        
+        $db = new Db();
+        $db->setCustomerPassword($this->customerid,md5($password));
+    }
 	
 }
 

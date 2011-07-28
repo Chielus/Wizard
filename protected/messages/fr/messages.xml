@@ -174,6 +174,11 @@
 <target><![CDATA[Veuillez donner une couleur valide.]]></target>
 </trans-unit>
 
+<trans-unit id="36">
+<source><![CDATA[There are no infoscreens available to configure!]]></source>
+<target><![CDATA[Il n'y a pas d'écrans d'info pour configurer!]]></target>
+</trans-unit>
+
 <trans-unit id="37">
 <source><![CDATA[Interval to circulate through the different stops (in seconds):]]></source>
 <target><![CDATA[Intervalle de circuler à travers les arrêts (en secondes):]]></target>
@@ -210,13 +215,13 @@
 </trans-unit>
 
 <trans-unit id="44">
-<source><![CDATA[<- Back to list of available infoscreens]]></source>
-<target><![CDATA[<- Retour à la liste des écrans d'information disponibles]]></target>
+<source><![CDATA[Infoscreen list]]></source>
+<target><![CDATA[Liste des écrans d'information]]></target>
 </trans-unit>
 
 <trans-unit id="45">
-<source><![CDATA[<- Logout]]></source>
-<target><![CDATA[<- Déconnexion]]></target>
+<source><![CDATA[Logout]]></source>
+<target><![CDATA[Déconnexion]]></target>
 </trans-unit>
 
 <trans-unit id="46">
@@ -225,8 +230,38 @@
 </trans-unit>
 
 <trans-unit id="47">
-<source><![CDATA[There are no infoscreens available to configure!]]></source>
-<target><![CDATA[Il n'y a pas d'écrans d'info pour configurer!]]></target>
+<source><![CDATA[<- Logout]]></source>
+<target><![CDATA[<- Logout]]></target>
+</trans-unit>
+
+<trans-unit id="48">
+<source><![CDATA[<- Back to list of available infoscreens]]></source>
+<target><![CDATA[<- Retour à la liste des écrans d'information disponibles]]></target>
+</trans-unit>
+
+<trans-unit id="49">
+<source><![CDATA[File size must be below 500kB.]]></source>
+<target><![CDATA[La taille du fichier doit être inférieure à 500 ko.]]></target>
+</trans-unit>
+
+<trans-unit id="50">
+<source><![CDATA[No file selected.]]></source>
+<target><![CDATA[Pas de fichier sélectionné.]]></target>
+</trans-unit>
+
+<trans-unit id="51">
+<source><![CDATA[File OK!]]></source>
+<target><![CDATA[Fichier OK!]]></target>
+</trans-unit>
+
+<trans-unit id="52">
+<source><![CDATA[Error: couldn't save file.]]></source>
+<target><![CDATA[Erreur: le fichier n'a pas été enregistré.]]></target>
+</trans-unit>
+
+<trans-unit id="53">
+<source><![CDATA[File size is too big.]]></source>
+<target><![CDATA[Le fichier est trop grand.]]></target>
 </trans-unit>
 
 </body>

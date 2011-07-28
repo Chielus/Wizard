@@ -59,7 +59,7 @@
 	<com:TRegularExpressionValidator
     		ControlToValidate="Color"
     		RegularExpression="^(#){1}([a-fA-F0-9]){6}$"
-    		Text="<%[Doesn't match a HTML Color string. #FFFFFF is white and #000000 is black and so on...]%>" /></td>
+    		Text="<%[Doesn't match a HTML Color string.]%>" /></td>
 </tr>
 </table>
 

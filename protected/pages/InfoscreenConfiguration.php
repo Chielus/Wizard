@@ -43,17 +43,17 @@ class InfoscreenConfiguration extends TPage {
 				// There customer is missing in the session, redirect to login page.
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 			} else if(!isset($this->Session['infoscreenid'])) {
-				// The infoscreenid is missing in the session, redirect to list.
+				// The infoscreenid is missing in the session and no root customer -> redirect to list.
 				$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 			} else {
-				$customer = $this->Session['customer'];
+				$customer = $this->Session['customer']->getCustomerId() == 0 ? $this->Session['configureCustomer'] : $this->Session['customer'];
 				$infoscreenid = $this->Session['infoscreenid'];
 				$infoscreen = $customer->getInfoscreen($infoscreenid);
 				
 				$this->Title->Data = $infoscreen->getTitle();
 				$this->Motd->Data = $infoscreen->GetMotd();
-				$this->Rows->Data = $infoscreen->getSettingValue("rowstoshow");
-				$this->Cycle->Data = $infoscreen->getSettingValue("cycleinterval");
+				$this->Rows->Data = $infoscreen->getSettingValue("rowstoshow") ? $infoscreen->getSettingValue("rowstoshow") : '10';
+				$this->Cycle->Data = $infoscreen->getSettingValue("cycleinterval") ? $infoscreen->getSettingValue("cycleinterval") : '10';
 				$this->Color->Data = $infoscreen->getSettingValue("color");
 				
 				$this->Lang->DataSource = array("en" => "EN", "nl" => "NL", "de" => "DE", "fr" => "FR");
@@ -73,7 +73,7 @@ class InfoscreenConfiguration extends TPage {
 			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 		} else {
 			if ($this->Page->IsValid)	{
-				$customer = $this->Session['customer'];
+				$customer = $this->Session['customer']->getCustomerId() == 0 ? $this->Session['configureCustomer'] : $this->Session['customer'];
 				$infoscreenid = $this->Session['infoscreenid'];
 				$infoscreen = $customer->getInfoscreen($infoscreenid);
 				

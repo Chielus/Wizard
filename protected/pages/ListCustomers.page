@@ -2,7 +2,7 @@
  
 <com:TContent ID="Body">
 
-<h2><%[List of available infoscreens]%></h2>
+<h2><%[List of customers]%></h2>
 
 <com:TLabel Id="Empty" Style="display: none" Text="" />
  
@@ -22,23 +22,24 @@
 		DataField="id"
 		/>
 	<com:TBoundColumn
-		HeaderText="<%[Title]%>"
-		DataField="title"
+		HeaderText="<%[Username]%>"
+		DataField="username"
 		/>
 	<com:TBoundColumn
-		HeaderText="<%[Message of the day]%>"
-		DataField="motd"
+		HeaderText="<%[#Infoscreens]%>"
+		DataField="#infoscreens"
 		/>
 	<com:TTemplateColumn
-		ItemStyle.HorizontalAlign="Center">
+		ItemStyle.HorizontalAlign="Right">
 		<prop:ItemTemplate>
-			<com:TButton Text="<%[Configure]%>" OnCommand="Page.configureInfoscreen" CommandName="infoscreenid" CommandParameter="<%#$this->Parent->DataItem['id']%>" />
-		</prop:ItemTemplate>
-	</com:TTemplateColumn>
+			<com:TButton Text="<%[Configure customer]%>" OnCommand="Page.configureCustomer" CommandName="customerid" CommandParameter="<%#$this->Parent->DataItem['id']%>" />
+            <com:TButton Text="<%[Configure infoscreens]%>" OnCommand="Page.configureInfoScreens" CommandName="customerid" CommandParameter="<%#$this->Parent->DataItem['id']%>" />
+        </prop:ItemTemplate>
+    </com:TTemplateColumn>
 </com:TDataGrid>
 
 </br>
-<com:TButton ID="addButton" Visible="False" Text="<%[Add infoscreen]%>" OnCommand="Page.addInfoscreen" />
+<com:THyperLink Text="<%[Add customer]%>" NavigateUrl="index.php?page=CustomerConfiguration" />
 </br>
 </br>
 <com:THyperLink Text="<%[<- Logout]%>" NavigateUrl="index.php?page=Login" />

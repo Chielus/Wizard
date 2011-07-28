@@ -39,7 +39,7 @@ class InfoscreenStops extends TPage {
 		} else {
 			$url = 'css/style.css';
 			$this->Page->ClientScript->registerStyleSheetFile($url, $url);			
-		}		
+		}
     }
 
 	// Register a prado rendered component in <head> so it's accessible using javascript.
@@ -152,7 +152,7 @@ class InfoscreenStops extends TPage {
 			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 		} else {
 			// Get needed information from session.
-			$customer = $this->Session['customer'];
+			$customer = $this->Session['customer']->getCustomerId() == 0 ? $this->Session['configureCustomer'] : $this->Session['customer'];
 			$infoscreenid = $this->Session['infoscreenid'];
 			$infoscreen = $customer->getInfoscreen($infoscreenid);	
 			

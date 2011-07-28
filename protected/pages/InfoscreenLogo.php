@@ -58,20 +58,20 @@ class InfoscreenLogo extends TPage {
 
 			if(($type != 'image/bmp') && ($type != 'image/gif') && ($type != 'image/jpeg') && ($type != 'image/png') ) {
 	            unset($this->Session['fileLogo']);
-				$this->Status->Text = "Invalid file type.";
+				$this->Status->Text = Prado::localize("File must be of type .JPG, .JPEG, .GIF, .BMP or .PNG.");
 	        } else if($sender->FileSize > (1024 * 500)) {
 	            unset($this->Session['fileLogo']);
-				$this->Status->Text = "File size is too big.";
+				$this->Status->Text = Prado::localize("File size is too big.");
 	        } else {
 	        	if($this->Logo->saveAs($this->temp . $this->Logo->FileName)) {				
 					$this->Display->ImageUrl = $this->Page->publishFilePath('/tmp/wizard/' . $sender->FileName);
 					$this->Display->Style = "display: block";
 					
 					$this->Session['fileLogo'] = $sender->FileName;
-					$this->Status->Text = "File OK!";
+					$this->Status->Text = Prado::localize("File OK!");
 				} else {
 					unset($this->Session['fileLogo']);
-					$this->Status->Text = "Error: couldn't save file.";
+					$this->Status->Text = Prado::localize("Error: couldn't save file.");
 				}
 	        }		
 		} else {
@@ -105,7 +105,7 @@ class InfoscreenLogo extends TPage {
 			$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 		} else {
 			if(isset($this->Session['fileLogo'])) {
-				$customer = $this->Session['customer'];
+				$customer = $this->Session['customer']->getCustomerId() == 0 ? $this->Session['configureCustomer'] : $this->Session['customer'];
 				$infoscreenid = $this->Session['infoscreenid'];
 				$infoscreen = $customer->getInfoscreen($infoscreenid);
 				

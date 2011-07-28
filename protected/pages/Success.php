@@ -35,10 +35,12 @@ class Success extends TPage {
 			if(!isset($this->Session['customer'])) {
 				// There customer is missing in the session, redirect to login page.
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
-			} else if(!isset($this->Session['infoscreenid'])) {
-				// The infoscreenid is missing in the session, redirect to list.
-				$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
-			} 
+			} else if($this->Session['customer']->getCustomerId() == 0) {
+                // root customer -> Back hyperlink should link to ListCustomers page
+                $this->Back->Text = Prado::localize("<- Back to list of customers.");
+                $this->Back->NavigateUrl = "index.php?page=ListCustomers";
+            } 
+            
     	}
    	}
 

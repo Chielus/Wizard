@@ -1,0 +1,32 @@
+<%@ MasterClass="Application.layouts.MainLayout" Title="Wizard" %>
+ 
+<com:TContent ID="Body">
+ 
+<h2><%[Customer Configuration]%></h2>
+<br/>
+ 
+<table ID="Main">
+<tr>
+	<td><com:TLabel Text="<%[Username:]%>" /></td>
+	<td><com:TTextBox Width="400" ID="Username" />
+	<com:TRequiredFieldValidator ControlToValidate="Username"
+    		ErrorMessage="<%[Please provide a username.]%>" 
+    		Display="Dynamic" /></td>
+</tr>
+<tr>
+	<td><com:TLabel Text="<%[New Password:]%>" /></td>
+	<td><com:TTextBox Width="400" TextMode="Password" ID="NewPassword" />
+</tr>
+<tr>
+    <td><com:TLabel Text="<%[Retype password:]%>" /></td>
+    <td><com:TTextBox Width="400" TextMode="Password" ID="PasswordCheck" />
+    <com:TCompareValidator ControlToValidate="PasswordCheck" ControlToCompare="NewPassword"
+            Text="<%[Passwords don't match.]%>" 
+            Display="Dynamic" /></td>
+</tr>
+</table>
+
+<br/>
+<com:TButton ButtonType="Submit" Text="<%[Save]%>" OnClick="saveCustomer" />
+ 
+</com:TContent>

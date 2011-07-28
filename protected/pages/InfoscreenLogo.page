@@ -10,7 +10,7 @@
 <com:TActiveImage ID="Display" Style="display: none" />
 <br/>
 <br/>
-<com:TActiveLabel ID="Status" Text="No file selected." />
+<com:TActiveLabel ID="Status" Text="<%[No file selected.]%>" />
 <br/>
 <br/>
 <com:TButton ButtonType="Submit" Text="<%[Save]%>" OnClick="submitLogo" />

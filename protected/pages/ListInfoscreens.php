@@ -41,7 +41,7 @@ class ListInfoscreens extends TPage {
 		
 		$infoscreenids = $customer->getInfoscreenIds();
 		foreach($infoscreenids as $id) {
-			$infoscreen = $this->Session['customer']->getInfoscreen($id);
+			$infoscreen = $customer->getInfoscreen($id);
 			array_push($data, array("id" => $id, "title" => $infoscreen->getTitle(), "motd" => $infoscreen->getMotd()));
 		}
 		
@@ -56,8 +56,17 @@ class ListInfoscreens extends TPage {
 				// There customer is missing in the session, redirect to login page.
 				$this->Response->redirect($this->Service->constructUrl('Login', null, true));
 			} else {
-				$customer = $this->Session['customer'];	
-				$infoscreens = $this->getInfoscreens($customer);
+			    $customer;
+			    if($this->Session['customer']->getCustomerId() == 0){
+			        $db = new Db();
+			        $customer = $db->getCustomer($this->Request['cid']);
+                    $this->Session->open();
+                    $this->Session['configureCustomer'] = $customer;
+                    $this->addButton->Visible = "True";
+		        } else {
+                    $customer = $this->Session['customer'];
+                }
+				$infoscreens = $this->getInfoscreens($customer);               
 				if(empty($infoscreens)) {
 					$this->Empty->Data = Prado::localize("There are no infoscreens available to configure!");
 					$this->Empty->Style = "";
@@ -79,6 +88,20 @@ class ListInfoscreens extends TPage {
 		
 		$this->Response->redirect($this->Service->constructUrl('InfoscreenStops', null, true));
 	}
+    
+    // Event handler for the OnClick event of the configure button.
+    public function addInfoscreen($sender, $param) {
+        $db = new Db();
+        $customerid = $this->Request['cid']; // from request because only root can add infoscreens
+        $infoscreenid = $db->insertInfoscreen($customerid);
+        if($infoscreenid == -1){
+            throw new Exception("Failed inserting Infoscreen");
+        } else {
+            $this->Session->open();
+            $this->Session['infoscreenid'] = $infoscreenid;
+            $this->Response->redirect($this->Service->constructUrl('InfoscreenStops', null, true));
+        }
+    }
 
 }
 
