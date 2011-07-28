@@ -115,6 +115,7 @@ class InfoscreenStops extends TPage {
 		$this->registerScriptClientId($this->SelectedDeLijn);
 
 		$this->registerScriptClientId($this->HiddenStations);
+        $this->registerScriptClientId($this->HiddenStationNames);
 	}
 
 	public function onLoad($param) {
@@ -132,10 +133,37 @@ class InfoscreenStops extends TPage {
 					// The infoscreenid is missing in the session, redirect to list.
 					$this->Response->redirect($this->Service->constructUrl('ListInfoscreens', null, true));
 				} else {
+				    // fill SelectedLists with the current stops
+                    $customer = $this->Session['customer']->getCustomerId() == 0 ? $this->Session['configureCustomer'] : $this->Session['customer'];
+                    $infoscreenid = $this->Session['infoscreenid'];
+                    $infoscreen = $customer->getInfoscreen($infoscreenid);
+                    
+				    $this->fillStops($infoscreen);
 					$this->HiddenStations->Value = "";
+                    $this->HiddenStationNames->Value = "";
 				}
 	    	}
 	}
+
+    public function fillStops($infoscreen){
+        $stationids = $infoscreen->getStationIds();
+        foreach($stationids as $type => $stations){
+            $arr = array();
+            foreach($stations as $station){
+                $arr[$station[0]] = $station[1];
+            }
+            if($type == "NMBS"){
+                $this->SelectedNMBS->DataSource = $arr;
+                $this->SelectedNMBS->dataBind();
+            } else if($type == "MIVB"){
+                $this->SelectedMIVB->DataSource = $arr;
+                $this->SelectedMIVB->dataBind();
+            } else if($type == "DeLijn"){
+                $this->SelectedDeLijn->DataSource = $arr;
+                $this->SelectedDeLijn->dataBind();
+            }
+        }
+    }
 	
 	// Event handler for the OnClick event of the save button.
 	public function saveStops($sender, $param) {
@@ -160,8 +188,13 @@ class InfoscreenStops extends TPage {
 			// We retreive the selected stations from our hidden text field (see top of this page).
 			$infoscreen->removeAllStations();
 			$stations = explode(";", $this->HiddenStations->Value);
-			foreach($stations as $id) {
-				$infoscreen->addStation($id);
+            $stationNames = explode(";", $this->HiddenStationNames->Value);
+            
+			foreach($stations as $i => $id) {
+			    if($i != count($stations)-1){ // ignore last one (empty value)
+			        $infoscreen->addStation($id,$stationNames[$i]);
+			    }
+				
 			}
 
 			// Redirect to the next step of the configuration.

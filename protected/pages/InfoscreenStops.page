@@ -27,6 +27,7 @@
 </tr>
 <tr>
 	<td><com:THiddenField Id="HiddenStations" Value="" /></td>
+	<td><com:THiddenField Id="HiddenStationNames" Value="" /></td>
 </tr>
 </table>
 
@@ -106,21 +107,24 @@
 	  }
 	  
 	   var tVal = $("#" + ClientID.HiddenStations).val();
-	   $("#" + ClientID.HiddenStations).val(tVal + ";" + value + ";");
+	   $("#" + ClientID.HiddenStations).val(tVal + value + ";");
+	   
+	   tVal = $("#" + ClientID.HiddenStationNames).val();
+       $("#" + ClientID.HiddenStationNames).val(tVal + item + ";");
     }
 
     function removeOptionSelected(event) {
-	 if (event.keyCode == 46) {
-	        var element = event.srcElement;
-	 
-                var i;
-                for (i = element.length - 1; i >= 0; i--) {
-                     if (element.options[i].selected) {      
-						$('#' + ClientID.HiddenStations).text().replace(element.options[i].value, '');
-						element.remove(i);
-                     }
-                }
-	 }
+    	 if (event.keyCode == 46) {
+    	        var element = event.srcElement ? event.srcElement : event.target;
+                    var i;
+                    for (i = element.length - 1; i >= 0; i--) {
+                         if (element.options[i].selected) {      
+    						$('#' + ClientID.HiddenStations).text().replace(element.options[i].value, '');
+    						$('#' + ClientID.HiddenStationNames).text().replace(element.options[i].text, '');
+    						element.remove(i);
+                         }
+                    }
+    	 }
     }
 </script>
  

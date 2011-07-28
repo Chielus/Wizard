@@ -60,8 +60,8 @@ class Infoscreen {
 		return $this->stations->getStationIds();
 	}
 	
-	public function addStation($stationid) {
-		$this->stations->addStation($stationid);
+	public function addStation($stationid,$stationname) {
+		$this->stations->addStation($stationid,$stationname);
 	}
 	
 	public function removeStation($stationid) {
@@ -70,9 +70,9 @@ class Infoscreen {
 	
 	public function removeAllStations() {
 		foreach($this->stations->getStationIds() as $stations) {
-			foreach($stations as $stationid) {
-				$this->stations->removeStation($stationid);
-			}	
+		    foreach($stations as $station) {
+				$this->stations->removeStation($station[0]);
+			}
 		}
 	}
 	

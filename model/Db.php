@@ -192,18 +192,18 @@ class Db {
 	
 	// return array of stationids for specific infoscreen
 	// format: array(type = (..., ..., ...), type = (..., ..., ...), ...)
-	public function getStationIds($infoscreenid) {
+	public function getStations($infoscreenid) {
 		$stationids = array();
 		$stationids['NMBS'] = array();
 		$stationids['MIVB'] = array();
 		$stationids['DeLijn'] = array();
 		
-		if($stmt = $this->dbconn->prepare("SELECT stationid, type FROM stations WHERE infoscreenid = ?")) {
+		if($stmt = $this->dbconn->prepare("SELECT stationid, type, name FROM stations WHERE infoscreenid = ?")) {
 			$stmt->bind_param('i', $infoscreenid);
 			$stmt->execute();
-			$stmt->bind_result($stationid, $type);
+			$stmt->bind_result($stationid, $type, $stationname);
 			while($stmt->fetch()) {
-				array_push($stationids[$type], $stationid);
+				array_push($stationids[$type], array($stationid, $stationname));
 			}
 			$stmt->close();
 		}
@@ -212,15 +212,15 @@ class Db {
 	}
 	
 	// insert station and return true or false if not successful
-	public function insertStation($infoscreenid, $stationid) {
+	public function insertStation($infoscreenid, $stationid, $stationname) {
 		if(strrpos($stationid, 'BE.NMBS') !== false) {
 			$type = 'NMBS';
 		} else if (strrpos($stationid, 'BE.MIVB') !== false) {
 			$type = 'MIVB';
 		}
 
-		if($stmt = $this->dbconn->prepare("INSERT INTO stations VALUES(?, ?, ?)")) {
-			$stmt->bind_param('iss', $infoscreenid, $stationid, $type);
+		if($stmt = $this->dbconn->prepare("INSERT INTO stations VALUES(?, ?, ?, ?)")) {
+			$stmt->bind_param('isss', $infoscreenid, $stationid, $type, $stationname);
 			$stmt->execute();
 			$stmt->close();
 		
