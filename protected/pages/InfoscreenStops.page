@@ -40,12 +40,18 @@
 		fillDropDownList();
 		
 		$('#' + ClientID.ListNMBS).change(getSelectedAddList);
-	    	$('#' + ClientID.ListMIVB).change(getSelectedAddList);
-	    	$('#' + ClientID.ListDeLijn).change(getSelectedAddList);
+    	$('#' + ClientID.ListMIVB).change(getSelectedAddList);
+    	$('#' + ClientID.ListDeLijn).change(getSelectedAddList);
 
 		$('#' + ClientID.SelectedNMBS).keydown(removeOptionSelected);
-	     	$('#' + ClientID.SelectedMIVB).keydown(removeOptionSelected);
-	      	$('#' + ClientID.SelectedDeLijn).keydown(removeOptionSelected);
+     	$('#' + ClientID.SelectedMIVB).keydown(removeOptionSelected);
+      	$('#' + ClientID.SelectedDeLijn).keydown(removeOptionSelected);
+	    
+        // add current stops to the hidden fields
+        $.each($('#' + ClientID.SelectedNMBS + ' option' + ', ' + '#' + ClientID.SelectedMIVB + ' option' + ', ' + '#' + ClientID.SelectedDeLijn + ' option'),function(i,option){
+            $("#" + ClientID.HiddenStations).val( $("#" + ClientID.HiddenStations).val() + option.value + ";");
+            $("#" + ClientID.HiddenStationNames).val( $("#" + ClientID.HiddenStationNames).val() + option.text + ";");
+        });
 	});
 	
 	function handle(){
@@ -118,9 +124,9 @@
     	        var element = event.srcElement ? event.srcElement : event.target;
                     var i;
                     for (i = element.length - 1; i >= 0; i--) {
-                         if (element.options[i].selected) {      
-    						$('#' + ClientID.HiddenStations).text().replace(element.options[i].value, '');
-    						$('#' + ClientID.HiddenStationNames).text().replace(element.options[i].text, '');
+                         if (element.options[i].selected) {     
+    						$('#' + ClientID.HiddenStations).val($('#' + ClientID.HiddenStations).val().replace(element.options[i].value + ';', ''));
+    						$('#' + ClientID.HiddenStationNames).val($('#' + ClientID.HiddenStationNames).val().replace(element.options[i].text + ';', ''));
     						element.remove(i);
                          }
                     }
